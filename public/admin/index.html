@@ -1,50 +1,42 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
-</head>
-<body>
-  <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
-  <!-- Netlify Identity is no longer used. The script below handles GitHub OAuth -->
-  <script>
-    (function() {
-      // *******************************************************************
-      // ** IMPORTANT: REPLACE 'YOUR_GITHUB_CLIENT_ID_HERE' WITH THE      **
-      // ** CLIENT ID FROM YOUR GITHUB OAUTH APP.                         **
-      // *******************************************************************
-      const GITHUB_CLIENT_ID = 'Ov23lidowlEowxrO37wX'; // Make sure this is your latest Client ID
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+  </head>
+  <body>
+    <!-- Load Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
 
-      // Simple function to parse query parameters
-      function getQueryParam(param) {
-        const params = new URLSearchParams(window.location.search);
-        return params.get(param);
-      }
+    <script>
+      (function() {
+        // 🔑 GitHub OAuth App Client ID của bạn
+        const GITHUB_CLIENT_ID = 'Ov23lidowlEowxrO37wX';
 
-      // If the URL has a "code" parameter, we've been redirected back from GitHub
-      const code = getQueryParam('code');
-
-      if (code) {
-        // We have a code, so we need to trade it for an access token.
-        // Decap CMS can handle this automatically if we pass it through a temporary redirect.
-        // This is part of the "Implicit Grant" flow for client-side apps.
-        const newUrl = `/admin/#/auth?code=${code}&provider=github`;
-        // Clear the query parameters from the URL by replacing the history state
-        window.history.replaceState({}, document.title, "/admin/");
-        window.location.href = newUrl;
-      } else {
-        // If there's no code, check if the user is already authenticated or in the auth flow.
-        const accessToken = window.location.hash.match(/access_token=([^&]+)/);
-        const isAuthCallback = window.location.hash.includes('#/auth');
-
-        // If not authenticated and not in the middle of auth, redirect to GitHub.
-        if (!accessToken && !isAuthCallback) {
-          const authUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=repo&redirect_uri=${window.location.protocol}//${window.location.host}${window.location.pathname}`;
-          window.location.href = authUrl;
+        // Hàm lấy query param (vd: code, error)
+        function getQueryParam(param) {
+          const params = new URLSearchParams(window.location.search);
+          return params.get(param);
         }
-      }
-    })();
-  </script>
-</body>
+
+        // Nếu GitHub trả về code (callback)
+        const code = getQueryParam('code');
+        if (code) {
+          const newUrl = `/admin/#/auth?code=${code}&provider=github`;
+          window.history.replaceState({}, document.title, "/admin/");
+          window.location.href = newUrl;
+        } else {
+          // Nếu chưa login thì chuyển hướng qua GitHub OAuth
+          const accessToken = window.location.hash.match(/access_token=([^&]+)/);
+          const isAuthCallback = window.location.hash.includes('#/auth');
+          if (!accessToken && !isAuthCallback) {
+            const redirectUri = `${window.location.origin}/admin/`;
+            const authUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=repo&redirect_uri=${redirectUri}`;
+            window.location.href = authUrl;
+          }
+        }
+      })();
+    </script>
+  </body>
 </html>

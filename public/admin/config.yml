@@ -1,15 +1,9 @@
 backend:
-  name: github # Switched from git-gateway to direct GitHub backend
-  repo: xuanhung2598-web/wheeledit-website # IMPORTANT: Replace with your actual GitHub repo path, e.g., "johndoe/wheeledit-site"
+  name: github
+  repo: xuanhung2598-web/wheeledit-website
   branch: main
-  # Optional: Use a different branch for development/previews
-  # open_authoring: true
-  # commit_messages:
-  #   create: 'Create {{collection}} “{{slug}}”'
-  #   update: 'Update {{collection}} “{{slug}}”'
-  #   delete: 'Delete {{collection}} “{{slug}}”'
-  #   uploadMedia: '[skip ci] Upload “{{path}}”'
-  #   deleteMedia: '[skip ci] Delete “{{path}}”'
+  base_url: https://decap-cms-oauth.vercel.app
+  auth_endpoint: auth
 
 media_folder: "public/img/uploads"
 public_folder: "/img/uploads"
@@ -27,7 +21,7 @@ collections:
             label_singular: "Post"
             widget: "list"
             fields:
-              - { label: "ID (Slug for URL)", name: "id", widget: "string", hint: "A unique, URL-friendly identifier (e.g., 'my-first-post')" }
+              - { label: "ID (Slug for URL)", name: "id", widget: "string", hint: "Unique URL-friendly ID (e.g., 'my-first-post')" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Author", name: "author", widget: "string" }
               - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
