@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
+  <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
+</head>
+<body>
+  <!-- Netlify Identity is no longer used. The script below handles GitHub OAuth -->
+  <script>
+    (function() {
+      // *******************************************************************
+      // ** IMPORTANT: REPLACE 'YOUR_GITHUB_CLIENT_ID_HERE' WITH THE      **
+      // ** CLIENT ID FROM YOUR GITHUB OAUTH APP CREATED IN STEP 2.       **
+      // *******************************************************************
+      const GITHUB_CLIENT_ID = '0v231i7JKfzv1TgY8Z0U';
+
+      // Simple function to parse query parameters
+      function getQueryParam(param) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(param);
+      }
+
+      // If the URL has a "code" parameter, we've been redirected back from GitHub
+      const code = getQueryParam('code');
+
+      if (code) {
+        // We have a code, so we need to trade it for an access token.
+        // Decap CMS can handle this automatically if we pass it through a temporary redirect.
+        // This is part of the "Implicit Grant" flow for client-side apps.
+        const newUrl = `/admin/#/auth?code=${code}&provider=github`;
+        window.location.href = newUrl;
+      } else {
+        // If there's no code, check if the user is already authenticated
+        // by looking for a token in the URL hash (Decap CMS stores it there).
+        const accessToken = window.location.hash.match(/access_token=([^&]+)/);
+        
+        if (!accessToken) {
+          // Not authenticated, redirect to GitHub for login.
+          const authUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=repo&redirect_uri=${window.location.protocol}//${window.location.host}${window.location.pathname}`;
+          window.location.href = authUrl;
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
