@@ -12,9 +12,9 @@
     (function() {
       // *******************************************************************
       // ** IMPORTANT: REPLACE 'YOUR_GITHUB_CLIENT_ID_HERE' WITH THE      **
-      // ** CLIENT ID FROM YOUR GITHUB OAUTH APP CREATED IN STEP 2.       **
+      // ** CLIENT ID FROM YOUR GITHUB OAUTH APP.                         **
       // *******************************************************************
-      const GITHUB_CLIENT_ID = 'Ov23lidowlEowxrO37wX';
+      const GITHUB_CLIENT_ID = 'Ov23lidowlEowxrO37wX'; // Make sure this is your latest Client ID
 
       // Simple function to parse query parameters
       function getQueryParam(param) {
@@ -30,14 +30,16 @@
         // Decap CMS can handle this automatically if we pass it through a temporary redirect.
         // This is part of the "Implicit Grant" flow for client-side apps.
         const newUrl = `/admin/#/auth?code=${code}&provider=github`;
+        // Clear the query parameters from the URL by replacing the history state
+        window.history.replaceState({}, document.title, "/admin/");
         window.location.href = newUrl;
       } else {
-        // If there's no code, check if the user is already authenticated
-        // by looking for a token in the URL hash (Decap CMS stores it there).
+        // If there's no code, check if the user is already authenticated or in the auth flow.
         const accessToken = window.location.hash.match(/access_token=([^&]+)/);
-        
-        if (!accessToken) {
-          // Not authenticated, redirect to GitHub for login.
+        const isAuthCallback = window.location.hash.includes('#/auth');
+
+        // If not authenticated and not in the middle of auth, redirect to GitHub.
+        if (!accessToken && !isAuthCallback) {
           const authUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=repo&redirect_uri=${window.location.protocol}//${window.location.host}${window.location.pathname}`;
           window.location.href = authUrl;
         }
