@@ -1,38 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Manager</title>
+    <title>Wheeledit CMS</title>
   </head>
   <body>
     <!-- Load Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
 
+    <!-- GitHub OAuth handler -->
     <script>
-      (function() {
-        // 🔑 GitHub OAuth App Client ID của bạn
-        const GITHUB_CLIENT_ID = 'Ov23lidowlEowxrO37wX';
+      (function () {
+        // ⚙️ Gắn Client ID GitHub của bạn vào đây
+        const GITHUB_CLIENT_ID = "Ov23lidowlEowxrO37wX";
 
-        // Hàm lấy query param (vd: code, error)
+        // Hàm đọc query params (lấy "code" khi GitHub redirect về)
         function getQueryParam(param) {
           const params = new URLSearchParams(window.location.search);
           return params.get(param);
         }
 
-        // Nếu GitHub trả về code (callback)
-        const code = getQueryParam('code');
+        const code = getQueryParam("code");
+
         if (code) {
+          // Nếu GitHub redirect về với ?code=xxxxx
           const newUrl = `/admin/#/auth?code=${code}&provider=github`;
           window.history.replaceState({}, document.title, "/admin/");
           window.location.href = newUrl;
         } else {
-          // Nếu chưa login thì chuyển hướng qua GitHub OAuth
+          // Nếu chưa đăng nhập, chuyển hướng đến GitHub OAuth
+          const authUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=repo,user&redirect_uri=https://decap-cms-oauth.vercel.app/callback`;
           const accessToken = window.location.hash.match(/access_token=([^&]+)/);
-          const isAuthCallback = window.location.hash.includes('#/auth');
+          const isAuthCallback = window.location.hash.includes("#/auth");
+
           if (!accessToken && !isAuthCallback) {
-            const redirectUri = `${window.location.origin}/admin/`;
-            const authUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=repo&redirect_uri=${redirectUri}`;
             window.location.href = authUrl;
           }
         }
