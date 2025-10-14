@@ -1,8 +1,9 @@
 backend:
-name: [ github | gitlab ]
-repo: xuanhung2598-web/wheeledit-website # Path to your Github/Gitlab
-repository branch: main # Branch to update
-base_url: https://netlify-cms.adrianub.vercel.app
+  name: github
+  repo: xuanhung2598-web/wheeledit-website
+  branch: main
+  base_url: https://decap-cms-oauth-three.vercel.app
+  auth_endpoint: callback
 
 media_folder: "public/img/uploads" # nơi lưu ảnh trong repo
 public_folder: "/img/uploads"       # đường dẫn public hiển thị ngoài web
