@@ -3,7 +3,7 @@ backend:
   repo: xuanhung2598-web/wheeledit-website
   branch: main
   base_url: https://decap-cms-oauth.vercel.app
-  auth_endpoint: /auth
+  auth_endpoint: /callback
 
 media_folder: "public/img/uploads"
 public_folder: "/img/uploads"
@@ -21,7 +21,7 @@ collections:
             label_singular: "Post"
             widget: "list"
             fields:
-              - { label: "ID (Slug for URL)", name: "id", widget: "string" }
+              - { label: "ID (Slug for URL)", name: "id", widget: "string", hint: "A unique, URL-friendly identifier (e.g., 'my-first-post')" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Author", name: "author", widget: "string" }
               - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
