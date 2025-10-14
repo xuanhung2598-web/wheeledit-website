@@ -11,19 +11,27 @@
 
     <script>
       /*
-       * 🔐 GitHub OAuth setup
-       * Make sure the GitHub OAuth App has:
+       * ✅ Setup GitHub OAuth cho Decap CMS
+       * Cấu hình GitHub OAuth App:
        *   Homepage URL: https://wheeledit-website.pages.dev/
-       *   Authorization callback URL: https://decap-cms-oauth.vercel.app
+       *   Authorization callback URL: https://decap-cms-oauth.vercel.app/callback
        */
 
-      const CLIENT_ID = "Ov23lidowlEowxrO37wX"; // ⚠️ dùng client_id của bạn
-      const REDIRECT_URI = `${window.location.origin}/admin/`;
+      const CLIENT_ID = "Ov23lidowlEowxrO37wX"; // Client ID GitHub của bạn
+      const OAUTH_PROXY = "https://decap-cms-oauth.vercel.app"; // Proxy server trung gian
 
-      // Nếu chưa có access_token thì chuyển đến GitHub login
-      if (!window.location.hash.includes("access_token") && !window.location.search.includes("code=")) {
-        const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`;
+      // Lấy mã code trả về từ GitHub (nếu có)
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+
+      if (!code) {
+        // Nếu chưa có code -> chuyển đến trang GitHub login
+        const redirectUri = `${OAUTH_PROXY}/callback`;
+        const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo,user&redirect_uri=${encodeURIComponent(redirectUri)}`;
         window.location.href = authUrl;
+      } else {
+        // Nếu có code (đã xác thực xong)
+        window.location.href = `/admin/#/auth?code=${code}&provider=github`;
       }
     </script>
   </body>
