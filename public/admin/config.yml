@@ -1,6 +1,6 @@
 backend:
   name: github # Đã thay đổi từ git-gateway
-  repo: your-github-username/your-repo-name # QUAN TRỌNG: Vui lòng thay thế bằng tên người dùng/tên kho lưu trữ GitHub của bạn
+  repo: xuanhung2598-web/wheeledit-website # QUAN TRỌNG: Vui lòng thay thế bằng tên người dùng/tên kho lưu trữ GitHub của bạn
   branch: main
 
 media_folder: "public/img/uploads"
