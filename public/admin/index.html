@@ -3,33 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Manager</title>
+    <title>Wheeledit CMS</title>
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
+    <!-- Load Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.4.0/dist/decap-cms.js"></script>
 
     <script>
-      const GITHUB_CLIENT_ID = "Ov23lidowlEowxrO37wX";
-      const REDIRECT_URI = "https://decap-cms-oauth.vercel.app/callback";
-      const SITE_URL = "https://wheeledit-website.pages.dev/admin/";
+      /*
+       * 🔐 GitHub OAuth setup
+       * Make sure the GitHub OAuth App has:
+       *   Homepage URL: https://wheeledit-website.pages.dev/
+       *   Authorization callback URL: https://decap-cms-oauth.vercel.app
+       */
 
-      (function () {
-        const params = new URLSearchParams(window.location.search);
-        const code = params.get("code");
+      const CLIENT_ID = "Ov23lidowlEowxrO37wX"; // ⚠️ dùng client_id của bạn
+      const REDIRECT_URI = `${window.location.origin}/admin/`;
 
-        if (code) {
-          if (window.opener) {
-            window.opener.postMessage({ code: code, provider: "github" }, window.location.origin);
-            window.close();
-          } else {
-            window.location.replace(`${SITE_URL}#/auth?code=${code}&provider=github`);
-          }
-        } else {
-          const authUrl =
-            `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=repo&redirect_uri=${REDIRECT_URI}`;
-          window.location.href = authUrl;
-        }
-      })();
+      // Nếu chưa có access_token thì chuyển đến GitHub login
+      if (!window.location.hash.includes("access_token") && !window.location.search.includes("code=")) {
+        const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`;
+        window.location.href = authUrl;
+      }
     </script>
   </body>
 </html>
