@@ -4,15 +4,97 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wheeledit CMS</title>
+    <!-- Basic styling for Decap CMS, you can add your own custom CSS here if needed -->
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background-color: #f0f2f5; /* Light grey background */
+      }
+      #nc-root { /* The root element where Decap CMS mounts */
+        height: 100vh;
+      }
+    </style>
   </head>
   <body>
     <!-- Load Decap CMS -->
     <script>
+      // Tells Decap CMS to wait for a manual initialization, rather than auto-initializing.
+      // This allows us to inject our config object.
       window.CMS_MANUAL_INIT = true;
     </script>
     <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
+
     <script>
-      CMS.init();
+      // Define the configuration object for Decap CMS
+      const config = {
+        // Backend configuration: Specifies how Decap CMS connects to your content source.
+        backend: {
+          name: 'github', // Using GitHub as the content backend
+          repo: 'xuanhung2598-web/wheeliedit-website', // Your GitHub repository in 'owner/repo-name' format
+          branch: 'main', // The branch where your content is stored
+          base_url: 'https://decap-cms-oauth-three.vercel.app', // The URL of your Vercel deployment where the OAuth app resides
+          auth_endpoint: 'callback', // The endpoint on your Vercel app that handles the OAuth callback
+          client_id: 'Ov23liA32xSuJKiBEb0F', // Your GitHub OAuth Client ID
+          // api_root: 'https://api.github.com' // Optional: If you need to specify a custom GitHub API root
+        },
+
+        // Media Folder configuration: Where uploaded images/files are stored in your repository.
+        media_folder: 'public/img/uploads', // Path relative to the root of your repository
+
+        // Public Folder configuration: The public URL path where your site serves media.
+        // This is used to display images in the CMS UI and for generating image URLs in posts.
+        public_folder: '/img/uploads', // Path relative to the public root of your website
+
+        // Collections: Defines the different types of content you will manage with Decap CMS.
+        collections: [
+          {
+            name: 'blog', // Unique internal name for the collection
+            label: 'Blog', // User-friendly label displayed in the CMS sidebar
+            files: [ // This collection is structured as a single file (e.g., a JSON file)
+              {
+                name: 'posts', // Internal name for this specific file entry
+                label: 'Blog Posts', // Label for this file entry in the CMS UI
+                file: 'public/data/blog.json', // Path to the JSON file in your repository
+                fields: [ // Fields within each blog post entry
+                  { label: 'Title', name: 'title', widget: 'string' },
+                  { label: 'Author', name: 'author', widget: 'string' },
+                  {
+                    label: 'Publish Date',
+                    name: 'date',
+                    widget: 'datetime',
+                    date_format: 'YYYY-MM-DD',
+                    time_format: false, // Don't include time in the date field
+                  },
+                  {
+                    label: 'Featured Image',
+                    name: 'image',
+                    widget: 'image',
+                  },
+                  { label: 'Excerpt', name: 'excerpt', widget: 'text' },
+                  { label: 'Content', name: 'content', widget: 'markdown' }, // Markdown editor for post content
+                ],
+              },
+            ],
+          },
+          // Add more collections here if you have other content types (e.g., 'pages', 'settings')
+          // Example for a folder collection (multiple files, one per post):
+          // {
+          //   name: 'articles',
+          //   label: 'Articles',
+          //   folder: 'src/content/articles', // Folder where individual article files are stored
+          //   create: true, // Allow users to create new articles
+          //   slug: '{{slug}}', // Generate slug based on title
+          //   fields: [
+          //     {label: 'Title', name: 'title', widget: 'string'},
+          //     // ... other fields
+          //   ]
+          // }
+        ],
+      };
+
+      // Initialize Decap CMS with the defined configuration
+      CMS.init({ config });
     </script>
   </body>
 </html>
