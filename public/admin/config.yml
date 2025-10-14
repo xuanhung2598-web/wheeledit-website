@@ -2,7 +2,7 @@ backend:
   name: github
   repo: xuanhung2598-web/wheeledit-website
   branch: main
-  base_url: https://decap-cms-oauth-three.vercel.app
+  base_url: https://decap-cms-oauth-m9bd2xhye-xuanhung2598-4981s-projects.vercel.app
   auth_endpoint: callback
 
 media_folder: "public/img/uploads" # nơi lưu ảnh trong repo
