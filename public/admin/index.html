@@ -8,9 +8,8 @@
     <style>
       body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-        background-color: #f0f2f5;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background-color: #f5f6fa;
       }
       #nc-root {
         height: 100vh;
@@ -19,26 +18,20 @@
   </head>
 
   <body>
-    <!-- Dừng auto init -->
     <script>
       window.CMS_MANUAL_INIT = true;
     </script>
-
-    <!-- Load Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
 
     <script>
-      // ==============================
-      // CONFIG CHÍNH
-      // ==============================
       const config = {
         backend: {
           name: "github",
-          repo: "xuanhung2598-web/wheeledit-website", // repo của bạn
+          repo: "xuanhung2598-web/wheeledit-website",
           branch: "main",
-          base_url: "https://decap-cms-oauth-three.vercel.app", // Vercel OAuth app
+          base_url: "https://decap-cms-oauth-three.vercel.app",
           auth_endpoint: "callback",
-          client_id: "Ov23liA32xSuJKiBEb0F", // Client ID GitHub
+          client_id: "Ov23liA32xSuJKiBEb0F",
         },
 
         media_folder: "public/img/uploads",
@@ -46,14 +39,15 @@
 
         collections: [
           {
-            name: "blog",
-            label: "Blog",
+            name: "blog_posts", // tên duy nhất (đã fix lỗi trùng)
+            label: "Blog Posts",
             files: [
               {
-                name: "blog_posts", <!-- ✅ ĐÃ SỬA: tên duy nhất -->
-                label: "Blog Posts",
+                name: "blog_data", // tên file trong CMS, cũng duy nhất
+                label: "Blog Data",
                 file: "public/data/blog.json",
                 fields: [
+                  { label: "ID", name: "id", widget: "string", hint: "Unique ID (e.g. my-first-post)" },
                   { label: "Title", name: "title", widget: "string" },
                   { label: "Author", name: "author", widget: "string" },
                   {
@@ -73,9 +67,6 @@
         ],
       };
 
-      // ==============================
-      // KHỞI TẠO CMS
-      // ==============================
       CMS.init({ config });
     </script>
   </body>
