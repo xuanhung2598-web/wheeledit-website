@@ -1,30 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wheeledit CMS</title>
+    <title>Content Manager</title>
   </head>
   <body>
     <!-- Load Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.4.0/dist/decap-cms.js"></script>
-
-    <script>
-      /*
-       * 🔐 GitHub OAuth setup
-       * Make sure GitHub OAuth App uses:
-       * Homepage URL: https://wheeledit-website.pages.dev/
-       * Authorization callback URL: https://decap-cms-oauth.vercel.app/callback
-       */
-      const CLIENT_ID = "Ov23lidowlEowxrO37wX";
-
-      (function() {
-        const code = new URLSearchParams(window.location.search).get("code");
-        if (code) {
-          // Redirect Decap CMS to handle the token
-          window.location.href = `/admin/#/auth?code=${code}&provider=github`;
-        }
-      })();
-    </script>
+    <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
   </body>
 </html>

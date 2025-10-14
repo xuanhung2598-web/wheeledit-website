@@ -22,7 +22,7 @@ const App: React.FC = () => {
             setIsLoading(true);
             try {
                 // Fetch the single source of truth for blog posts
-                const response = await fetch('/data/blog.json');
+                const response = await fetch('/public/data/blog.json');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

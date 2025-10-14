@@ -1,9 +1,7 @@
 backend:
-  name: github
-  repo: xuanhung2598-web/wheeledit-website
+  name: github # Đã thay đổi từ git-gateway
+  repo: your-github-username/your-repo-name # QUAN TRỌNG: Vui lòng thay thế bằng tên người dùng/tên kho lưu trữ GitHub của bạn
   branch: main
-  base_url: https://decap-cms-oauth.vercel.app
-  auth_endpoint: /callback
 
 media_folder: "public/img/uploads"
 public_folder: "/img/uploads"
