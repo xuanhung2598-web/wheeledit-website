@@ -9,28 +9,22 @@
     <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
 
     <script>
-      // === CONFIG ===
-      const GITHUB_CLIENT_ID = "Ov23lidowlEowxrO37wX"; // Dùng Client ID của bạn
+      const GITHUB_CLIENT_ID = "Ov23lidowlEowxrO37wX";
       const REDIRECT_URI = "https://decap-cms-oauth.vercel.app/callback";
       const SITE_URL = "https://wheeledit-website.pages.dev/admin/";
 
-      // === HANDLE OAUTH ===
       (function () {
         const params = new URLSearchParams(window.location.search);
         const code = params.get("code");
 
-        // Trường hợp đã có code trả về
         if (code) {
-          // Gửi message cho cửa sổ chính (nếu có)
           if (window.opener) {
             window.opener.postMessage({ code: code, provider: "github" }, window.location.origin);
             window.close();
           } else {
-            // Không có opener -> tự chuyển hướng về CMS admin
             window.location.replace(`${SITE_URL}#/auth?code=${code}&provider=github`);
           }
         } else {
-          // Nếu chưa có code, bắt đầu flow đăng nhập GitHub
           const authUrl =
             `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=repo&redirect_uri=${REDIRECT_URI}`;
           window.location.href = authUrl;
