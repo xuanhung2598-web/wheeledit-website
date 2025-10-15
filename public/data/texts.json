@@ -32,9 +32,9 @@
   "contact": {
     "email": "info@wheeledit.com",
     "phone": "+1 (555) 123-4567",
-    "address": "123 Photo Lane, Edit City, USA",
+    "address": "Hung tri - Ha tinh",
     "social": {
-      "facebook": "#",
+      "facebook": "https://www.facebook.com/profile.php?id=61581949820182",
       "instagram": "#",
       "youtube": "#",
       "whatsapp": "#"
@@ -48,11 +48,26 @@
   "header": {
     "logo": "Wheeledit",
     "nav": [
-      { "href": "#/services", "text": "Services" },
-      { "href": "#/about", "text": "Why Us" },
-      { "href": "#/testimonials", "text": "Testimonials" },
-      { "href": "#/blog", "text": "Blog" },
-      { "href": "#/contact", "text": "Contact" }
+      {
+        "href": "#/services",
+        "text": "Services"
+      },
+      {
+        "href": "#/about",
+        "text": "Why Us"
+      },
+      {
+        "href": "#/testimonials",
+        "text": "Testimonials"
+      },
+      {
+        "href": "#/blog",
+        "text": "Blog"
+      },
+      {
+        "href": "#/contact",
+        "text": "Contact"
+      }
     ]
   }
 }
