@@ -17,18 +17,10 @@ collections:
         label: "Blog Posts"
         file: "public/data/blog.json"
         fields:
-          - { label: "ID", name: "id", widget: "string" }
+          - { label: "ID (Slug for URL)", name: "id", widget: "string" }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Author", name: "author", widget: "string" }
           - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
           - { label: "Featured Image", name: "imageUrl", widget: "image" }
           - { label: "Excerpt", name: "excerpt", widget: "text" }
           - { label: "Content", name: "content", widget: "markdown" }
-
-  - name: "home"
-    label: "Home Page Text"
-    file: "public/data/home.json"
-    fields:
-      - { label: "Hero Title", name: "hero_title", widget: "string" }
-      - { label: "Hero Subtitle", name: "hero_subtitle", widget: "string" }
-      - { label: "CTA Text", name: "cta_text", widget: "string" }
