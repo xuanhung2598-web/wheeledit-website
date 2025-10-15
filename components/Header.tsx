@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import texts from '/data/texts.json'; // ✅ thêm dòng này
+import React, { useEffect, useState } from 'react';
+import { loadTexts } from '@/utils/loadTexts';
 
 const Header: React.FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [texts, setTexts] = useState<any>({});
+
+  useEffect(() => {
+    loadTexts().then(setTexts);
+  }, []);
 
   const navLinks = texts?.header?.nav ?? [
     { href: '#/services', text: 'Services' },

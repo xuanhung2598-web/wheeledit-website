@@ -1,11 +1,17 @@
-import React from 'react';
-import texts from '/data/texts.json'; // 🔹 Thêm dòng này (duy nhất)
+import React, { useEffect, useState } from 'react';
+import { loadTexts } from '@/utils/loadTexts';
 
 interface HeroProps {
   onOpenModal: () => void;
 }
 
 const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
+  const [texts, setTexts] = useState<any>({});
+
+  useEffect(() => {
+    loadTexts().then(setTexts);
+  }, []);
+
   return (
     <section
       id="hero"

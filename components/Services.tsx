@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ServiceCard from './ServiceCard';
-import texts from '/data/texts.json'; // ✅ thêm dòng này
+import { loadTexts } from '@/utils/loadTexts';
 
 interface Service {
   id: string;
@@ -16,6 +16,12 @@ interface ServicesProps {
 }
 
 const Services: React.FC<ServicesProps> = ({ onGetFreeTest }) => {
+  const [texts, setTexts] = useState<any>({});
+
+  useEffect(() => {
+    loadTexts().then(setTexts);
+  }, []);
+
   const servicesData: Service[] = [
     {
       id: 'single',
@@ -46,7 +52,6 @@ const Services: React.FC<ServicesProps> = ({ onGetFreeTest }) => {
     },
   ];
 
-  // ✅ override text từ JSON nếu trùng id
   const overrideServices = servicesData.map((svc) => {
     const o = (texts?.services ?? []).find((x: any) => x.id === svc.id);
     return o
