@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "title": "Professional Real Estate Photo Editing",
+    "subtitle": "Stunning, high-quality images that sell properties faster. First edit is on us!"
+  },
+  "services": [
+    {
+      "id": "single",
+      "name": "Single Exposure",
+      "price": "$0.40 / image",
+      "description": "Basic enhancements including color correction, sharpening, and lens distortion removal for a clean, vibrant look."
+    },
+    {
+      "id": "hdr",
+      "name": "HDR Merge",
+      "price": "$0.60 / image",
+      "description": "We blend multiple exposures to create a single, perfectly lit image with balanced light and vibrant colors."
+    },
+    {
+      "id": "flash",
+      "name": "Flash",
+      "price": "$0.80 / image",
+      "description": "The ultimate technique for natural, crisp, and color-accurate interior photos by combining ambient light with flash shots."
+    },
+    {
+      "id": "ai",
+      "name": "AI Enhancement",
+      "price": "$0.25 / image",
+      "description": "Leverage AI for automated enhancements like sky replacement, lighting adjustments, and color grading for stunning results in seconds."
+    }
+  ],
+  "contact": {
+    "email": "info@wheeledit.com",
+    "phone": "+1 (555) 123-4567",
+    "address": "123 Photo Lane, Edit City, USA",
+    "social": {
+      "facebook": "#",
+      "instagram": "#",
+      "youtube": "#",
+      "whatsapp": "#"
+    }
+  },
+  "footer": {
+    "privacy": "#",
+    "terms": "#",
+    "copyright": "Wheeledit. All Rights Reserved."
+  },
+  "header": {
+    "logo": "Wheeledit",
+    "nav": [
+      { "href": "#/services", "text": "Services" },
+      { "href": "#/about", "text": "Why Us" },
+      { "href": "#/testimonials", "text": "Testimonials" },
+      { "href": "#/blog", "text": "Blog" },
+      { "href": "#/contact", "text": "Contact" }
+    ]
+  }
+}
