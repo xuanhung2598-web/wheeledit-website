@@ -1,28 +1,11 @@
 import React from 'react';
 import type { Testimonial } from '../types';
 
-const testimonialsData: Testimonial[] = [
-  {
-    quote: 'I’ve used their HDR editing service multiple times and the results are always consistent. The photos look bright, natural, and professional — exactly what I was hoping for!',
-    author: 'Sarah L.',
-    company: 'Real Estate Agent',
-    avatar: 'https://i.pravatar.cc/80?img=47'
-  },
-  {
-    quote: 'The turnaround speed really impressed me. I sent a large batch and got everything back the next day with perfect edits. Reliable and easy to work with.',
-    author: 'Mark S.',
-    company: 'Photographer',
-    avatar: 'https://i.pravatar.cc/80?img=54'
-  },
-  {
-    quote: 'Their attention to detail is outstanding. Every correction was spot on, and the final images looked better than I expected. Highly recommended.',
-    author: 'Emily R.',
-    company: 'Property Manager',
-    avatar: 'https://i.pravatar.cc/80?img=9'
-  },
-];
+interface TestimonialsProps {
+  testimonialsData: Testimonial[];
+}
 
-const Testimonials: React.FC = () => {
+const Testimonials: React.FC<TestimonialsProps> = ({ testimonialsData }) => {
   return (
     <section id="testimonials" className="section-padding bg-white">
       <div className="container mx-auto px-6">

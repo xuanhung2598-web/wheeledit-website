@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import WhyChooseUs from '../components/WhyChooseUs';
 import Testimonials from '../components/Testimonials';
 import Blog from '../components/Blog';
 import Contact from '../components/Contact';
-import { Service, BlogPost } from '../types';
+import { Service, BlogPost, HomepageData } from '../types';
 
 interface HomePageProps {
     onOpenModal: (service?: Service) => void;
@@ -14,6 +14,28 @@ interface HomePageProps {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ onOpenModal, posts, locationHash }) => {
+    const [homepageData, setHomepageData] = useState<HomepageData | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchHomepageData = async () => {
+            try {
+                const response = await fetch('/data/homepage.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                setHomepageData(data);
+            } catch (err: any) {
+                console.error("Error loading homepage data:", err);
+                setError(err.message || 'Could not load homepage data.');
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchHomepageData();
+    }, []);
     
     useEffect(() => {
         // This effect handles scrolling to sections when a hash link is clicked.
@@ -33,21 +55,31 @@ const HomePage: React.FC<HomePageProps> = ({ onOpenModal, posts, locationHash })
                 setTimeout(() => {
                     const element = document.getElementById(id);
                     if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
+                        const yOffset = -80; // a little space from the top
+                        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({top: y, behavior: 'smooth'});
                     }
                 }, 100);
             }
         }
     }, [locationHash]);
 
+    if (isLoading) {
+        return <div className="min-h-screen flex items-center justify-center"><p>Loading homepage...</p></div>;
+    }
+
+    if (error || !homepageData) {
+        return <div className="min-h-screen flex items-center justify-center"><p className="text-red-500">Error: Could not load homepage content.</p></div>;
+    }
+
     return (
         <>
-            <Hero onOpenModal={onOpenModal} />
-            <Services onGetFreeTest={onOpenModal} />
-            <WhyChooseUs />
-            <Testimonials />
+            <Hero data={homepageData.hero} onOpenModal={() => onOpenModal()} />
+            <Services servicesData={homepageData.services} onGetFreeTest={onOpenModal} />
+            <WhyChooseUs data={homepageData.whyChooseUs} />
+            <Testimonials testimonialsData={homepageData.testimonials} />
             <Blog posts={posts} />
-            <Contact />
+            <Contact data={homepageData.contact} />
         </>
     );
 };

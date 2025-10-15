@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import BlogPage from './components/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
+import AdminPage from './pages/AdminPage';
 import FreeTestModal from './components/FreeTestModal';
 import { Service, BlogPost } from './types';
 
@@ -55,7 +56,7 @@ const App: React.FC = () => {
     // Scroll to top on page navigation
     useEffect(() => {
         const path = location.substring(1) || '/';
-        if (path.startsWith('/blog')) {
+        if (path.startsWith('/blog') || path.startsWith('/admin')) {
             window.scrollTo(0, 0);
         }
     }, [location]);
@@ -80,6 +81,10 @@ const App: React.FC = () => {
 
         const path = location.substring(1) || '/';
 
+        if (path === '/admin') {
+            return <AdminPage />;
+        }
+
         if (path.startsWith('/blog/page/')) {
             const page = parseInt(path.replace('/blog/page/', ''), 10);
             return <BlogPage posts={blogPosts} currentPage={page || 1} />;
@@ -101,18 +106,18 @@ const App: React.FC = () => {
         return <HomePage onOpenModal={handleOpenModal} posts={blogPosts} locationHash={location} />;
     };
     
-    const isHomePage = () => {
+    const isRenderableOnPage = () => {
         const path = location.substring(1) || '/';
-        return !path.startsWith('/blog');
+        return !path.startsWith('/admin');
     };
 
     return (
         <div className="App">
-            <Header onOpenModal={handleOpenModal} onHomePage={isHomePage()} />
+            {isRenderableOnPage() && <Header onOpenModal={handleOpenModal} onHomePage={!location.substring(1).startsWith('/blog')} />}
             <main>
                 {renderPage()}
             </main>
-            <Footer />
+            {isRenderableOnPage() && <Footer />}
             {isModalOpen && <FreeTestModal service={selectedService} onClose={handleCloseModal} />}
         </div>
     );

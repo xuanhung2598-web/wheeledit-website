@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { loadTexts } from '@/utils/loadTexts';
+import React from 'react';
 
 const Footer: React.FC = () => {
-  const [texts, setTexts] = useState<any>({});
-
-  useEffect(() => {
-    loadTexts().then(setTexts);
-  }, []);
-
   return (
-    <footer className="bg-gray-900 text-white py-6 text-center">
-      <p>
-        &copy; {new Date().getFullYear()}{' '}
-        {texts?.footer?.copyright ?? 'Wheeledit. All Rights Reserved.'}
-      </p>
-      <div className="mt-2">
-        <a href={texts?.footer?.privacy ?? '#'} className="mx-3 hover:text-blue-400">
-          Privacy Policy
-        </a>
-        <a href={texts?.footer?.terms ?? '#'} className="mx-3 hover:text-blue-400">
-          Terms of Service
-        </a>
+    <footer id="footer" className="bg-gray-800 text-gray-300">
+      <div className="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <p>&copy; {new Date().getFullYear()} Wheeledit. All Rights Reserved.</p>
+        <div className="mt-4 md:mt-0">
+          <a href="#" className="text-gray-300 hover:text-white ml-6">Privacy Policy</a>
+          <a href="#" className="text-gray-300 hover:text-white ml-6">Terms of Service</a>
+        </div>
       </div>
     </footer>
   );
