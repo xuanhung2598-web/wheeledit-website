@@ -16,10 +16,12 @@ export async function onRequestGet({ request, env }) {
   });
 
   const tokenData = await tokenResponse.json();
+
   return new Response(JSON.stringify(tokenData), {
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
     },
   });
 }
