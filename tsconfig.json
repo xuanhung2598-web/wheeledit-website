@@ -15,7 +15,7 @@
     "paths": { "@/*": ["./*"] },
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "resolveJsonModule": true,  // 👈 Dòng này cần có DẤU PHẨY trước nếu còn dòng sau
+    "resolveJsonModule": true,
     "strict": true
   },
   "include": ["src", "vite.config.ts"],
