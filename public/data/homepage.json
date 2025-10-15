@@ -120,14 +120,14 @@
         "href": "mailto:info@wheeledit.com"
       },
       {
-        "icon": "fas fa-phone",
-        "text": "+1 (555) 123-4567",
-        "href": "tel:+15551234567"
+        "icon": "fa-brands fa-whatsapp",
+        "text": "+84334925969",
+        "href": "tel:+84334925969"
       },
       {
         "icon": "fas fa-map-marker-alt",
-        "text": "123 Photo Lane, Edit City, USA",
-        "href": "#"
+        "text": "Ha tinh, Vietnam",
+        "href": "https://maps.app.goo.gl/f1r29Zv8XywKAB1MA"
       }
     ],
     "social": [
