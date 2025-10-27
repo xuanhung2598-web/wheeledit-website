@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-gray-700;
+}
+
+/* Add custom styles for components here */
+@layer components {
+  .cta-button {
+    /* Custom focus state for better accessibility */
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#007BFF];
+  }
+}

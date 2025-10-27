@@ -1,5 +1,5 @@
 {
-  "name": "Wheeledit - Dịch vụ chỉnh sửa hậu kỳ bất động sản",
-  "description": "Một trang web giới thiệu dịch vụ chỉnh sửa ảnh và video hậu kỳ cho lĩnh vực bất động sản, với các ví dụ trước và sau, thông tin giá cả và biểu mẫu yêu cầu dùng thử miễn phí.",
+  "name": "WheelEdit - Real Estate Photo Editing",
+  "description": "A professional real estate photo and video editing service website, built with React and Tailwind CSS. Features include service showcases with before/after sliders, testimonials, a contact form, and a blog with markdown-based articles.",
   "requestFramePermissions": []
 }
