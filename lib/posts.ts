@@ -8,7 +8,9 @@ const postsDirectory = path.join(process.cwd(), '_posts');
 
 export const getAllPosts = cache((): Post[] => {
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map(fileName => {
+  const allPostsData = fileNames
+    .filter(fileName => fileName.endsWith('.md')) // Ensure we only process markdown files
+    .map(fileName => {
     // Remove ".md" from file name to get id
     const slug = fileName.replace(/\.md$/, '');
 
@@ -18,11 +20,17 @@ export const getAllPosts = cache((): Post[] => {
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
+    const data = matterResult.data;
     
     const post: Post = {
         meta: {
             slug,
-            ...matterResult.data as Omit<PostMeta, 'slug'>,
+            title: data.title ?? 'Untitled Post',
+            date: data.date ?? '1970-01-01',
+            author: data.author ?? 'Anonymous',
+            excerpt: data.excerpt ?? '',
+            image: data.image ?? '/default-image.png',
+            tags: Array.isArray(data.tags) ? data.tags : [], // Ensure tags is always an array
         },
         content: matterResult.content,
     };
@@ -31,7 +39,7 @@ export const getAllPosts = cache((): Post[] => {
 
   // Sort posts by date
   return allPostsData.sort((a, b) => {
-    if (a.meta.date < b.meta.date) {
+    if (new Date(a.meta.date) < new Date(b.meta.date)) {
       return 1;
     } else {
       return -1;
@@ -49,7 +57,12 @@ export const getPostBySlug = cache((slug: string): Post | undefined => {
         return {
             meta: { 
                 slug, 
-                ...data as Omit<PostMeta, 'slug'>
+                title: data.title ?? 'Untitled Post',
+                date: data.date ?? '1970-01-01',
+                author: data.author ?? 'Anonymous',
+                excerpt: data.excerpt ?? '',
+                image: data.image ?? '/default-image.png',
+                tags: Array.isArray(data.tags) ? data.tags : [],
             },
             content
         };
