@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { getAllPosts } from '../../lib/posts';
 import BlogPageClient from '../../components/BlogPageClient';
@@ -25,20 +23,11 @@ export const metadata: Metadata = {
 };
 
 
-const BlogPage = ({ searchParams }: { searchParams?: { page?: string, q?: string } }) => {
+const BlogPage = () => {
   const allPosts = getAllPosts();
-  const query = searchParams?.q?.toLowerCase().trim() || '';
-
-  const filteredPosts = query
-    ? allPosts.filter(post => 
-        post.meta.title.toLowerCase().includes(query) ||
-        post.meta.excerpt.toLowerCase().includes(query) ||
-        post.meta.tags.some(tag => tag.toLowerCase().includes(query))
-      )
-    : allPosts;
   
   return (
-    <BlogPageClient posts={filteredPosts} />
+    <BlogPageClient posts={allPosts} />
   );
 };
 

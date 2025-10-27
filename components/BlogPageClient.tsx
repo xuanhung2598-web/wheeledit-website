@@ -14,19 +14,26 @@ interface BlogPageClientProps {
   posts: Post[];
 }
 
-const BlogPageClient: React.FC<BlogPageClientProps> = ({ posts: filteredPosts }) => {
+const BlogPageClient: React.FC<BlogPageClientProps> = ({ posts }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   
-  const initialQuery = searchParams.get('q') || '';
+  const query = searchParams.get('q')?.toLowerCase().trim() || '';
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
-  const [searchQuery, setSearchQuery] = useState(initialQuery);
+  const [searchQuery, setSearchQuery] = useState(query);
 
-  // Update searchQuery state if the URL param changes (e.g., back/forward buttons)
   useEffect(() => {
-    setSearchQuery(initialQuery);
-  }, [initialQuery]);
+    setSearchQuery(query);
+  }, [query]);
+
+  const filteredPosts = query
+    ? posts.filter(post => 
+        post.meta.title.toLowerCase().includes(query) ||
+        post.meta.excerpt.toLowerCase().includes(query) ||
+        post.meta.tags.some(tag => tag.toLowerCase().includes(query))
+      )
+    : posts;
 
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   const currentPosts = filteredPosts.slice(

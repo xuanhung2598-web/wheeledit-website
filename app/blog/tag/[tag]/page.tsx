@@ -1,11 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { getAllPosts, getAllTags } from '../../../../lib/posts';
-import BlogList from '../../../../components/BlogList';
 import AnimateOnScroll from '../../../../components/AnimateOnScroll';
-import Pagination from '../../../../components/Pagination';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import TagPageClient from '../../../../components/TagPageClient';
 
 // Utility function to convert a tag name into a URL-friendly slug
 const slugify = (tag: string) => tag.toLowerCase().replace(/ /g, '-');
@@ -32,9 +31,7 @@ export async function generateMetadata({ params }: { params: { tag: string } }):
   };
 }
 
-const POSTS_PER_PAGE = 6;
-
-const TagPage = ({ params, searchParams }: { params: { tag: string }; searchParams?: { page?: string } }) => {
+const TagPage = ({ params }: { params: { tag: string } }) => {
   const tagName = unslugify(params.tag);
   const posts = getAllPosts().filter(post => 
     post.meta.tags.some(t => t.toLowerCase() === tagName.toLowerCase())
@@ -43,18 +40,9 @@ const TagPage = ({ params, searchParams }: { params: { tag: string }; searchPara
   if (posts.length === 0) {
     notFound();
   }
-
-  const currentPage = parseInt(searchParams?.page || '1', 10);
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-  const currentPosts = posts.slice(
-    (currentPage - 1) * POSTS_PER_PAGE,
-    currentPage * POSTS_PER_PAGE
-  );
   
   const capitalizedTagName = tagName.charAt(0).toUpperCase() + tagName.slice(1);
   
-  const createPageUrl = (page: number) => `/blog/tag/${params.tag}?page=${page}`;
-
   return (
     <div className="bg-gray-50 pt-32 pb-20">
       <div className="max-w-6xl mx-auto px-5">
@@ -68,15 +56,7 @@ const TagPage = ({ params, searchParams }: { params: { tag: string }; searchPara
           </header>
         </AnimateOnScroll>
         
-        <BlogList posts={currentPosts} />
-        
-        {totalPages > 1 && (
-            <Pagination 
-                currentPage={currentPage}
-                totalPages={totalPages}
-                createPageUrl={createPageUrl}
-            />
-        )}
+        <TagPageClient posts={posts} tagSlug={params.tag} />
       </div>
     </div>
   );
