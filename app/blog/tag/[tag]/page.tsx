@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { getAllPosts, getAllTags } from '../../../../lib/posts';
 import AnimateOnScroll from '../../../../components/AnimateOnScroll';
@@ -31,6 +31,21 @@ export async function generateMetadata({ params }: { params: { tag: string } }):
   };
 }
 
+const TagPageSkeleton = () => (
+  <div className="mt-8">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[...Array(6)].map((_, i) => (
+        <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 animate-pulse">
+          <div className="w-full h-48 bg-gray-200 rounded-md mb-4"></div>
+          <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
+          <div className="h-4 bg-gray-200 rounded w-full mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
 const TagPage = ({ params }: { params: { tag: string } }) => {
   const tagName = unslugify(params.tag);
   const posts = getAllPosts().filter(post => 
@@ -56,7 +71,9 @@ const TagPage = ({ params }: { params: { tag: string } }) => {
           </header>
         </AnimateOnScroll>
         
-        <TagPageClient posts={posts} tagSlug={params.tag} />
+        <Suspense fallback={<TagPageSkeleton />}>
+          <TagPageClient posts={posts} tagSlug={params.tag} />
+        </Suspense>
       </div>
     </div>
   );
