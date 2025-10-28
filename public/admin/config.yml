@@ -1,57 +1,55 @@
-
 backend:
-  name: github # Replaced 'git-gateway' with 'github'
-  repo: xuanhung2598-web/wheeledit-website # Path to your repository
-  branch: main # Your default branch
-  base_url: https://decap-cms-oauth.vercel.app # External authentication handler
+  name: github
+  repo: xuanhung2598-web/wheeledit-website
+  branch: main
+  base_url: https://decap-cms-oauth.vercel.app
 
-# This line should be changed to the filename of your logo
-logo_url: /logo.png
+logo_url: /logo.png # Optional: a logo for the Netlify CMS UI
 
-media_folder: "public/images/uploads" # Location where uploaded files will be stored
-public_folder: "/images/uploads" # The src attribute for uploaded media will begin with this path
+media_folder: "public/images/uploads" # Media files will be stored in the repo under public/images/uploads
+public_folder: "/images/uploads" # The src attribute for uploaded media will be /images/uploads
 
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog Posts" # Used in the UI
-    folder: "_posts" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Author", name: "author", widget: "string"}
-      - {label: "Excerpt", name: "excerpt", widget: "text"}
-      - {label: "Featured Image", name: "image", widget: "image"}
-      - {label: "Tags", name: "tags", widget: "list"}
-      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "date", label: "Publish Date", widget: "datetime" }
+      - { name: "author", label: "Author", widget: "string" }
+      - { name: "excerpt", label: "Excerpt", widget: "text" }
+      - { name: "image", label: "Featured Image", widget: "image" }
+      - { name: "tags", label: "Tags", widget: "list" }
+      - { name: "body", label: "Body", widget: "markdown" }
 
   - name: "site_data"
     label: "Site Data"
     files:
-      - file: "_data/services.json"
-        label: "Services"
+      - label: "Services"
         name: "services"
+        file: "_data/services.json"
         fields:
           - label: "Services List"
             name: "services"
             widget: "list"
             fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Price", name: "price", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
-              - {label: "Before Image URL", name: "before", widget: "string", optional: true}
-              - {label: "After Image URL", name: "after", widget: "string", optional: true}
-              - {label: "Video URL", name: "videoUrl", widget: "string", optional: true}
-      - file: "_data/testimonials.json"
-        label: "Testimonials"
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "price", label: "Price", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "before", label: "Before Image URL", widget: "string", required: false }
+              - { name: "after", label: "After Image URL", widget: "string", required: false }
+              - { name: "videoUrl", label: "Video URL", widget: "string", required: false }
+      - label: "Testimonials"
         name: "testimonials"
+        file: "_data/testimonials.json"
         fields:
           - label: "Testimonials List"
             name: "testimonials"
             widget: "list"
             fields:
-              - {label: "Quote", name: "quote", widget: "text"}
-              - {label: "Author", name: "author", widget: "string"}
-              - {label: "Role", name: "role", widget: "string"}
-              - {label: "Avatar URL", name: "avatar", widget: "string"}
+              - { name: "quote", label: "Quote", widget: "text" }
+              - { name: "author", label: "Author", widget: "string" }
+              - { name: "role", label: "Role", widget: "string" }
+              - { name: "avatar", label: "Avatar URL", widget: "string" }
