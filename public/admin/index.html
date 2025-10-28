@@ -12,30 +12,35 @@
                script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net https://static.cloudflareinsights.com;
                style-src 'self' 'unsafe-inline';
                img-src 'self' data: blob: https://*;
-               connect-src 'self' https://api.github.com https://raw.githubusercontent.com;
+               connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://unpkg.com;
                worker-src blob:;"
     />
 
-    <!-- ✅ React 18 (khớp Next.js runtime) -->
+    <!-- ✅ React runtime (cần cho Decap CMS, khớp Next.js 18) -->
     <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
 
-    <!-- ✅ Biến tạm để chờ Decap -->
+    <!-- ✅ Khởi tạo sau khi trang tải xong -->
     <script>
       window.CMS_MANUAL_INIT = true;
-      window.onload = function () {
+      window.addEventListener("load", function () {
         const checkCMS = setInterval(() => {
           if (window.CMS) {
             clearInterval(checkCMS);
             CMS.init({ configPath: "config.yml" });
-            console.log("✅ Decap CMS initialized");
+            console.log("✅ Decap CMS initialized successfully");
           }
         }, 300);
-      };
+      });
     </script>
 
-    <!-- ✅ Load Decap CMS script -->
+    <!-- ✅ Decap CMS chính -->
     <script src="https://unpkg.com/decap-cms-app@3.1.11/dist/decap-cms-app.js"></script>
   </head>
-  <body></body>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+  </body>
 </html>
