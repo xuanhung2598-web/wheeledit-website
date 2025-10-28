@@ -1,7 +1,9 @@
 
 backend:
-  name: git-gateway
-  branch: main # Or master, depending on your default branch
+  name: github # Replaced 'git-gateway' with 'github'
+  repo: xuanhung2598-web/wheeledit-website # Path to your repository
+  branch: main # Your default branch
+  base_url: https://decap-cms-oauth.vercel.app # External authentication handler
 
 # This line should be changed to the filename of your logo
 logo_url: /logo.png
