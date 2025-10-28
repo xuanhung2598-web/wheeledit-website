@@ -4,11 +4,11 @@ backend:
   branch: main
   base_url: https://decap-cms-oauth.vercel.app
 
-logo_url: /logo.png # Optional: a logo for the Netlify CMS UI
-
-media_folder: "public/images/uploads" # Media files will be stored in the repo under public/images/uploads
-public_folder: "/images/uploads" # The src attribute for uploaded media will be /images/uploads
-media_library: git # Tells Decap to use the Git repository for media storage
+logo_url: /logo.png
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+media_library:
+  name: git
 
 collections:
   - name: "blog"
@@ -17,13 +17,13 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "date", label: "Publish Date", widget: "datetime" }
-      - { name: "author", label: "Author", widget: "string" }
-      - { name: "excerpt", label: "Excerpt", widget: "text" }
-      - { name: "image", label: "Featured Image", widget: "image" }
-      - { name: "tags", label: "Tags", widget: "list" }
-      - { name: "body", label: "Body", widget: "markdown" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "site_data"
     label: "Site Data"
@@ -36,12 +36,12 @@ collections:
             name: "services"
             widget: "list"
             fields:
-              - { name: "title", label: "Title", widget: "string" }
-              - { name: "price", label: "Price", widget: "string" }
-              - { name: "description", label: "Description", widget: "text" }
-              - { name: "before", label: "Before Image URL", widget: "string", required: false }
-              - { name: "after", label: "After Image URL", widget: "string", required: false }
-              - { name: "videoUrl", label: "Video URL", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Before Image URL", name: "before", widget: "string", required: false }
+              - { label: "After Image URL", name: "after", widget: "string", required: false }
+              - { label: "Video URL", name: "videoUrl", widget: "string", required: false }
       - label: "Testimonials"
         name: "testimonials"
         file: "_data/testimonials.json"
@@ -50,7 +50,7 @@ collections:
             name: "testimonials"
             widget: "list"
             fields:
-              - { name: "quote", label: "Quote", widget: "text" }
-              - { name: "author", label: "Author", widget: "string" }
-              - { name: "role", label: "Role", widget: "string" }
-              - { name: "avatar", label: "Avatar URL", widget: "string" }
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Author", name: "author", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Avatar URL", name: "avatar", widget: "string" }
