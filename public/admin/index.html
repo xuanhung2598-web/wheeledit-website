@@ -1,36 +1,34 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager | WheelEdit</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WheelEdit CMS</title>
 
-  <!--
-    This is the crucial Content-Security-Policy meta tag.
-    It provides the necessary permissions for Decap CMS to run,
-    including allowing inline scripts, eval(), blob workers for previews,
-    and connections to the GitHub API. This is the definitive fix for the blank page issue.
-  -->
-  <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://static.cloudflareinsights.com; 
-    style-src 'self' 'unsafe-inline'; 
-    img-src 'self' data: blob: https://*; 
-    connect-src 'self' https://api.github.com https://raw.githubusercontent.com; 
-    worker-src blob:;
-  ">
+    <!-- ✅ Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://static.cloudflareinsights.com;
+      style-src 'self' 'unsafe-inline';
+      img-src 'self' data: blob: https://*;
+      connect-src 'self' https://api.github.com https://raw.githubusercontent.com;
+      worker-src blob:;
+    ">
 
-  <!--
-    Load React and ReactDOM before Decap CMS.
-    This is required to resolve the React version conflict between Next.js (v18) and the CMS.
-  -->
-  <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-  
-  <!-- Load the Decap CMS script -->
-  <script src="https://unpkg.com/decap-cms-app@3.1.11/dist/decap-cms-app.js"></script>
-</head>
-<body>
-  <!-- The Decap CMS interface will be injected here -->
-</body>
+    <!-- ✅ React runtime (cần cho Decap CMS) -->
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+
+    <!-- ✅ Decap CMS chính -->
+    <script src="https://unpkg.com/decap-cms-app@3.1.11/dist/decap-cms-app.js"></script>
+  </head>
+
+  <body>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+      CMS.init({
+        configPath: "config.yml"
+      });
+    </script>
+  </body>
 </html>
