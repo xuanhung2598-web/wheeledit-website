@@ -1,34 +1,36 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WheelEdit CMS</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager | WheelEdit</title>
 
-    <!-- ✅ Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="
-      default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://static.cloudflareinsights.com;
-      style-src 'self' 'unsafe-inline';
-      img-src 'self' data: blob: https://*;
-      connect-src 'self' https://api.github.com https://raw.githubusercontent.com;
-      worker-src blob:;
-    ">
+  <!-- Comprehensive Content-Security-Policy to allow all necessary resources -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://static.cloudflareinsights.com; 
+    style-src 'self' 'unsafe-inline'; 
+    img-src 'self' data: blob: https://*; 
+    connect-src 'self' https://api.github.com https://raw.githubusercontent.com; 
+    worker-src blob:;
+  ">
 
-    <!-- ✅ React runtime (cần cho Decap CMS) -->
-    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <!-- Load React and ReactDOM to resolve version conflicts with Next.js -->
+  <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  
+  <!-- Tell Decap CMS to wait for manual initialization -->
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
 
-    <!-- ✅ Decap CMS chính -->
-    <script src="https://unpkg.com/decap-cms-app@3.1.11/dist/decap-cms-app.js"></script>
-  </head>
-
-  <body>
-    <script>
-      window.CMS_MANUAL_INIT = true;
-      CMS.init({
-        configPath: "config.yml"
-      });
-    </script>
-  </body>
+  <!-- Load the Decap CMS script -->
+  <script src="https://unpkg.com/decap-cms-app@3.1.11/dist/decap-cms-app.js"></script>
+</head>
+<body>
+  <!-- Initialize Decap CMS -->
+  <script>
+    CMS.init();
+  </script>
+</body>
 </html>
