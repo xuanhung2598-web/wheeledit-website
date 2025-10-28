@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import MainLayout from '../components/MainLayout';
 import '../globals.css';
-import { getSocialLinks } from '../lib/data'; // Import the data fetching function
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -18,9 +17,6 @@ export const metadata: Metadata = {
     template: '%s | WheelEdit',
   },
   description: 'Stunning, high-quality images that sell properties faster. We offer fast turnarounds, quality results, and affordable pricing for real estate photography.',
-  icons: {
-    icon: '/favicon.svg',
-  },
   openGraph: {
     title: 'WheelEdit | Professional Real Estate Photo Editing',
     description: 'Stunning, high-quality images that sell properties faster.',
@@ -48,20 +44,15 @@ export const metadata: Metadata = {
 };
 
 
-// Make the layout component async to fetch data
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // Fetch social links on the server
-  const socialLinks = getSocialLinks();
-
   return (
     <html lang="en" className={poppins.variable}>
       <body className="font-sans">
-        {/* Pass the fetched data to the main layout client component */}
-        <MainLayout socialLinks={socialLinks}>
+        <MainLayout>
           {children}
         </MainLayout>
       </body>

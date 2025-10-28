@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import AnimateOnScroll from './AnimateOnScroll';
 import { Service, Post } from '../types';
+import { services, testimonials, socialLinks } from '../lib/data';
 import { FaRocket, FaGem, FaDollarSign, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 
 
@@ -47,24 +48,8 @@ const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ servic
   );
 };
 
-interface HomePageClientProps {
-  recentPosts: Post[];
-  services: Service[];
-  testimonials: {
-    quote: string;
-    author: string;
-    role: string;
-    avatar: string;
-  }[];
-  socialLinks: {
-    facebook: string;
-    instagram: string;
-    youtube: string;
-    whatsapp: string;
-  };
-}
 
-const HomePageClient: React.FC<HomePageClientProps> = ({ recentPosts, services, testimonials, socialLinks }) => {
+const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
   const openModal = () => {
     window.dispatchEvent(new CustomEvent('open-modal'));
   };

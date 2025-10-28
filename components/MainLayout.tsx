@@ -9,19 +9,11 @@ import PageProgressBar from './PageProgressBar';
 // Lazy-load the Modal component
 const Modal = dynamic(() => import('./Modal'), { ssr: false });
 
-interface SocialLinks {
-  facebook: string;
-  instagram: string;
-  youtube: string;
-  whatsapp: string;
-}
-
 interface MainLayoutProps {
   children: React.ReactNode;
-  socialLinks: SocialLinks;
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children, socialLinks }) => {
+const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -37,7 +29,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, socialLinks }) => {
       <Suspense fallback={null}>
         <PageProgressBar />
       </Suspense>
-      <Header onOpenModal={() => setIsModalOpen(true)} socialLinks={socialLinks} />
+      <Header onOpenModal={() => setIsModalOpen(true)} />
       <main>{children}</main>
       <Footer />
       {isModalOpen && <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />}
