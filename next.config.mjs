@@ -28,7 +28,7 @@ const nextConfig = {
             },
         ]
     },
-    // This header is necessary to allow Decap CMS to run its scripts.
+    // This header is necessary to allow Decap CMS and Cloudflare scripts to run.
     async headers() {
         return [
             {
@@ -36,8 +36,8 @@ const nextConfig = {
                 headers: [
                     {
                         key: 'Content-Security-Policy',
-                        // Allows scripts from self, unsafe-eval, unsafe-inline, and unpkg.com
-                        value: "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://unpkg.com; object-src 'none'",
+                        // Allows scripts from self, unsafe-eval/inline, unpkg.com, and Cloudflare Insights
+                        value: "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://unpkg.com https://static.cloudflareinsights.com; object-src 'none'",
                     },
                 ],
             },

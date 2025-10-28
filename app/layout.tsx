@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     template: '%s | WheelEdit',
   },
   description: 'Stunning, high-quality images that sell properties faster. We offer fast turnarounds, quality results, and affordable pricing for real estate photography.',
+  icons: {
+    icon: '/favicon.svg',
+  },
   openGraph: {
     title: 'WheelEdit | Professional Real Estate Photo Editing',
     description: 'Stunning, high-quality images that sell properties faster.',
