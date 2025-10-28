@@ -3,8 +3,6 @@ import path from 'path';
 import matter from 'gray-matter';
 import { Post, PostMeta } from '../types';
 import { cache } from 'react';
-// FIX: Import process to resolve 'process.cwd' type error.
-import process from 'process';
 
 const postsDirectory = path.join(process.cwd(), '_posts');
 
@@ -32,8 +30,7 @@ export const getAllPosts = cache((): Post[] => {
             author: data.author ?? 'Anonymous',
             excerpt: data.excerpt ?? '',
             image: data.image ?? '/default-image.png',
-            // FIX: Cast tags to string[] to ensure correct type inference downstream.
-            tags: (Array.isArray(data.tags) ? data.tags : []) as string[], // Ensure tags is always an array
+            tags: Array.isArray(data.tags) ? data.tags : [], // Ensure tags is always an array
         },
         content: matterResult.content,
     };
@@ -65,8 +62,7 @@ export const getPostBySlug = cache((slug: string): Post | undefined => {
                 author: data.author ?? 'Anonymous',
                 excerpt: data.excerpt ?? '',
                 image: data.image ?? '/default-image.png',
-                // FIX: Cast tags to string[] to ensure correct type inference downstream.
-                tags: (Array.isArray(data.tags) ? data.tags : []) as string[],
+                tags: Array.isArray(data.tags) ? data.tags : [],
             },
             content
         };
