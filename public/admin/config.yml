@@ -8,6 +8,7 @@ logo_url: /logo.png # Optional: a logo for the Netlify CMS UI
 
 media_folder: "public/images/uploads" # Media files will be stored in the repo under public/images/uploads
 public_folder: "/images/uploads" # The src attribute for uploaded media will be /images/uploads
+media_library: git # Tells Decap to use the Git repository for media storage
 
 collections:
   - name: "blog"
