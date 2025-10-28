@@ -1,19 +1,24 @@
+# Backend configuration
 backend:
   name: github
   repo: xuanhung2598-web/wheeledit-website
   branch: main
   base_url: https://decap-cms-oauth.vercel.app
+  auth_endpoint: /api/auth  # ✅ Bắt buộc thêm dòng này cho Decap CMS OAuth
 
-logo_url: /logo.png
+# Media settings
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
-media_library:
-  name: git
 
+# Media library (optional but required field structure)
+media_library:
+  name: uploadcare  # ✅ hoặc "cloudinary" nếu bạn muốn upload ảnh lên cloud, nhưng uploadcare mặc định ổn
+
+# Content collections
 collections:
   - name: "blog"
     label: "Blog Posts"
-    folder: "_posts"
+    folder: "public/_posts"  # ✅ Nên để trong public để có thể build tĩnh nếu cần
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -28,9 +33,9 @@ collections:
   - name: "site_data"
     label: "Site Data"
     files:
-      - label: "Services"
+      - file: "public/_data/services.json"
+        label: "Services"
         name: "services"
-        file: "_data/services.json"
         fields:
           - label: "Services List"
             name: "services"
@@ -42,9 +47,10 @@ collections:
               - { label: "Before Image URL", name: "before", widget: "string", required: false }
               - { label: "After Image URL", name: "after", widget: "string", required: false }
               - { label: "Video URL", name: "videoUrl", widget: "string", required: false }
-      - label: "Testimonials"
+
+      - file: "public/_data/testimonials.json"
+        label: "Testimonials"
         name: "testimonials"
-        file: "_data/testimonials.json"
         fields:
           - label: "Testimonials List"
             name: "testimonials"
