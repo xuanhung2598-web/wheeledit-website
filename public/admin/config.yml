@@ -1,0 +1,55 @@
+
+backend:
+  name: git-gateway
+  branch: main # Or master, depending on your default branch
+
+# This line should be changed to the filename of your logo
+logo_url: /logo.png
+
+media_folder: "public/images/uploads" # Location where uploaded files will be stored
+public_folder: "/images/uploads" # The src attribute for uploaded media will begin with this path
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog Posts" # Used in the UI
+    folder: "_posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Featured Image", name: "image", widget: "image"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "site_data"
+    label: "Site Data"
+    files:
+      - file: "_data/services.json"
+        label: "Services"
+        name: "services"
+        fields:
+          - label: "Services List"
+            name: "services"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Price", name: "price", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Before Image URL", name: "before", widget: "string", optional: true}
+              - {label: "After Image URL", name: "after", widget: "string", optional: true}
+              - {label: "Video URL", name: "videoUrl", widget: "string", optional: true}
+      - file: "_data/testimonials.json"
+        label: "Testimonials"
+        name: "testimonials"
+        fields:
+          - label: "Testimonials List"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - {label: "Quote", name: "quote", widget: "text"}
+              - {label: "Author", name: "author", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Avatar URL", name: "avatar", widget: "string"}

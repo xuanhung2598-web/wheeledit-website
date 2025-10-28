@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, ReactNode } from 'react';
+// FIX: Import React to resolve 'React' namespace error.
+import React, { useRef, ReactNode } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 interface AnimateOnScrollProps {
