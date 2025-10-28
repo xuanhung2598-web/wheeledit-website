@@ -28,6 +28,21 @@ const nextConfig = {
             },
         ]
     },
+    // This header is necessary to allow Decap CMS to run its scripts.
+    async headers() {
+        return [
+            {
+                source: '/admin/:path*',
+                headers: [
+                    {
+                        key: 'Content-Security-Policy',
+                        // Allows scripts from self, unsafe-eval, unsafe-inline, and unpkg.com
+                        value: "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://unpkg.com; object-src 'none'",
+                    },
+                ],
+            },
+        ]
+    },
 };
 
 export default nextConfig;
