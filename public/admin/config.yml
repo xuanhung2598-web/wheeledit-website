@@ -1,0 +1,72 @@
+# This file configures the Decap CMS admin interface.
+# For more info, see: https://decapcms.org/docs/configuration-options/
+
+backend:
+  name: github
+  # The repo is now correctly set based on your deployment logs.
+  repo: xuanhung2598-web/wheeledit-website
+  branch: main # or master, or whatever your main branch is
+  # This setup uses GitHub's OAuth flow, which runs entirely in the browser.
+  # No server-side gateway or base_url is needed.
+
+# Where to store uploaded media files
+media_folder: "public/uploads"
+# The public-facing path for media files
+public_folder: "/uploads"
+
+# Content collections define the structure of your content.
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Cover Image", name: "image", widget: "image" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      
+  - name: "homepage"
+    label: "Homepage Content"
+    files:
+      - name: "services"
+        label: "Services"
+        file: "_data/services.json"
+        fields:
+          - name: "services"
+            label: "Services List"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Before Image URL", name: "before", widget: "string", required: false }
+              - { label: "After Image URL", name: "after", widget: "string", required: false }
+              - { label: "Video URL", name: "videoUrl", widget: "string", required: false }
+      - name: "testimonials"
+        label: "Testimonials"
+        file: "_data/testimonials.json"
+        fields:
+          - name: "testimonials"
+            label: "Testimonials List"
+            widget: "list"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Author", name: "author", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Avatar Image URL", name: "avatar", widget: "string" }
+      - name: "social_links"
+        label: "Social Links"
+        file: "_data/socialLinks.json"
+        fields:
+          - { label: "Facebook URL", name: "facebook", widget: "string" }
+          - { label: "Instagram URL", name: "instagram", widget: "string" }
+          - { label: "YouTube URL", name: "youtube", widget: "string" }
+          - { label: "WhatsApp URL", name: "whatsapp", widget: "string" }

@@ -1,0 +1,52 @@
+{
+  "services": [
+    {
+      "title": "Single Exposure",
+      "price": "$0.40 / image",
+      "description": "Basic enhancements including color correction, sharpening, and lens distortion removal for a clean, vibrant look.",
+      "before": "https://live.staticflickr.com/65535/54829022669_6e6416f3bd_b.jpg",
+      "after": "https://live.staticflickr.com/65535/54829022684_1289cf76ba_b.jpg"
+    },
+    {
+      "title": "HDR Merge",
+      "price": "$0.60 / image",
+      "description": "We blend multiple exposures to create a single, perfectly lit image with balanced light and vibrant colors.",
+      "before": "https://live.staticflickr.com/65535/54827937127_f75707f023_b.jpg",
+      "after": "https://live.staticflickr.com/65535/54829036884_0985b6af3f_b.jpg"
+    },
+    {
+      "title": "Flash",
+      "price": "$0.80 / image",
+      "description": "The ultimate technique for natural, crisp, and color-accurate interior photos by combining ambient light with flash shots.",
+      "before": "https://live.staticflickr.com/65535/54829049034_6884ac4613_b.jpg",
+      "after": "https://live.staticflickr.com/65535/54827949842_efeeb39a29_b.jpg"
+    },
+    {
+      "title": "AI Enhancement",
+      "price": "$0.25 / image",
+      "description": "Leverage AI for automated enhancements like sky replacement, lighting adjustments, and color grading for stunning results in seconds.",
+      "before": "https://picsum.photos/seed/ai-before/800/600",
+      "after": "https://picsum.photos/seed/ai-after/800/600"
+    },
+    {
+      "title": "Video Editing",
+      "price": "$20.00 / video",
+      "description": "Professional cuts, color grading, and stabilization for engaging property tours that captivate buyers.",
+      "videoUrl": "https://www.youtube.com/embed/VKAKbueezMk?autoplay=1&mute=1&loop=1&playlist=VKAKbueezMk"
+    },
+    {
+      "title": "Object Removal",
+      "price": "$1.00 - $10.00 / image",
+      "description": "Declutter your shots by seamlessly removing unwanted objects, from cords to furniture, for a cleaner final image.",
+      "before": "https://live.staticflickr.com/65535/54829080033_c23baa136b_b.jpg",
+      "after": "https://live.staticflickr.com/65535/54828818451_5ea312f454_b.jpg"
+    },
+    {
+      "title": "Virtual Staging",
+      "price": "$10.00 / image",
+      "description": "Transform empty rooms into beautifully furnished spaces that attract more buyers and help them visualize their future home.",
+      "before": "https://live.staticflickr.com/65535/54829166810_16e0cbd5ee_b.jpg",
+      "after": "https://live.staticflickr.com/65535/54829166930_ed2a3b04bf_b.jpg"
+    }
+  ]
+}
