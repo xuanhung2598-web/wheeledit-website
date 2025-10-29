@@ -2,10 +2,12 @@ backend:
   name: github
   repo: xuanhung2598-web/wheeledit-nextjs
   branch: main
+  base_url: https://api.decapcms.org # <-- THIS LINE FIXES THE LOGIN ISSUE
   auth_type: implicit
   app_id: Ov23li4JGW9GHQcWlupGw
 
-# This local_backend setting should be removed or commented out before deploying to production.
+# This local_backend setting is disabled for production.
+# Enable it for local development only.
 # local_backend: true
 
 media_folder: "public/images/uploads"
