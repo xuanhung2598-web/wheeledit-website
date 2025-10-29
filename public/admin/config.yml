@@ -2,7 +2,7 @@ backend:
   name: github
   repo: xuanhung2598-web/wheeledit-nextjs
   branch: main
-  base_url: https://api.decapcms.org # <-- THIS LINE FIXES THE LOGIN ISSUE
+  base_url: https://decap-cms-oauth.vercel.app # <-- THIS LINE FIXES THE LOGIN ISSUE
   auth_type: implicit
   app_id: Ov23li4JGW9GHQcWlupGw
 
