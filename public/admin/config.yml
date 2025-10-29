@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main # Hoặc master, tùy vào nhánh chính của bạn
+
+publish_mode: editorial_workflow
+
+media_folder: "public/images/uploads" # Thư mục lưu trữ file media
+public_folder: "/images/uploads" # Đường dẫn src cho media đã tải lên
+
+collections:
+  - name: "blog" # Dùng trong URL, vd: /admin/collections/blog
+    label: "Blog Posts" # Hiển thị trên giao diện
+    folder: "_posts" # Đường dẫn đến thư mục chứa các bài viết
+    create: true # Cho phép tạo bài viết mới
+    slug: "{{slug}}" # Tên file, vd: my-first-post.md
+    fields: # Các trường thông tin cho mỗi bài viết
+      - {label: "Slug", name: "slug", widget: "string", hint: "Tên định danh duy nhất trên URL. Ví dụ: my-first-post"}
+      - {label: "Title", name: "title", widget: "string", hint: "Tiêu đề bài viết"}
+      - {label: "Publish Date", name: "date", widget: "datetime", hint: "Ngày đăng bài"}
+      - {label: "Author", name: "author", widget: "string", hint: "Tên tác giả"}
+      - {label: "Excerpt", name: "excerpt", widget: "text", hint: "Đoạn tóm tắt ngắn gọn cho bài viết"}
+      - {label: "Featured Image", name: "image", widget: "image", hint: "Ảnh đại diện cho bài viết"}
+      - {label: "Tags", name: "tags", widget: "list", hint: "Thêm các tag liên quan (nhấn Enter sau mỗi tag)"}
+      - {label: "Body", name: "body", widget: "markdown", hint: "Nội dung chính của bài viết, viết bằng Markdown"}
