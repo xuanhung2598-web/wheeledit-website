@@ -1,0 +1,48 @@
+# =========================================
+# ⚙️ Netlify configuration for Decap CMS auth backend
+# =========================================
+
+[build]
+  publish = "public"
+  command = "npm run build"
+
+# -----------------------------------------
+# ✅ Cho phép xác thực từ domain chính Cloudflare Pages
+# -----------------------------------------
+[[redirects]]
+  from = "/.netlify/identity/*"
+  to = "https://wheeledit.netlify.app/.netlify/identity/:splat"
+  status = 200
+  force = true
+
+# -----------------------------------------
+# ✅ Cho phép xác thực (redirect) từ các domain ngoài Netlify
+# -----------------------------------------
+[[redirects]]
+  from = "https://wheeledit.com/*"
+  to = "https://wheeledit.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://cms.wheeledit.com/*"
+  to = "https://wheeledit.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://wheeledit.pages.dev/*"
+  to = "https://wheeledit.netlify.app/:splat"
+  status = 200
+  force = true
+
+# -----------------------------------------
+# 🛡️ Bảo mật cơ bản (tùy chọn)
+# -----------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
