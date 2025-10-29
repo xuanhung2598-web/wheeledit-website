@@ -1,0 +1,32 @@
+# The backend specifies how to connect to your content repository.
+# We are using the 'github' backend for direct repository access.
+backend:
+  name: github
+  # The path to your repository on GitHub.
+  repo: xuanhung2598-web/wheeledit-website
+  # The branch where your content is stored.
+  branch: main
+  
+# This is the folder where the media (images) will be uploaded.
+media_folder: "public/uploads"
+# This is the public path to the media folder, used in the generated markdown.
+public_folder: "/uploads"
+
+# Collections define the content types of your site.
+collections:
+  # This collection is for your blog posts.
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "_posts"
+    create: true
+    slug: "{{slug}}"
+    # Defines the fields for each blog post.
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "Stacy Render" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Body", name: "body", widget: "markdown" }
