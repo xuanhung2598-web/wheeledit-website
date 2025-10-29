@@ -1,10 +1,7 @@
 backend:
   name: git-gateway
   branch: main
-  site_domain: wheeledit.netlify.app
-
-site_url: "https://wheeledit.com"
-display_url: "https://wheeledit.com"
+  site_domain: stirring-twilight-62a69f.netlify.app
 
 publish_mode: editorial_workflow
 
@@ -12,37 +9,15 @@ media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  # --- Blog ---
   - name: "blog"
     label: "Blog Posts"
-    folder: "_posts"
+    folder: "posts"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Author", name: "author", widget: "string" }
-      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
-      - { label: "Featured Image", name: "image", widget: "image", required: false }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
-
-  # --- Homepage (editable content) ---
-  - name: "homepage"
-    label: "Homepage"
-    files:
-      - label: "Homepage Settings"
-        name: "home"
-        file: "content/homepage.yml"
-        fields:
-          - { label: "Hero Title", name: "hero_title", widget: "string" }
-          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "string" }
-          - { label: "CTA Text", name: "cta_text", widget: "string" }
-          - label: "Services"
-            name: "services"
-            widget: "list"
-            fields:
-              - { label: "Service Name", name: "name", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Price", name: "price", widget: "string" }
+      - { label: "Title", name: "title", widget: "string", hint: "Blog post title" }
+      - { label: "Publish Date", name: "date", widget: "datetime", hint: "Date published" }
+      - { label: "Author", name: "author", widget: "string", hint: "Post author" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary" }
+      - { label: "Featured Image", name: "image", widget: "image", hint: "Main blog image" }
+      - { label: "Body", name: "body", widget: "markdown", hint: "Main content of the post" }
