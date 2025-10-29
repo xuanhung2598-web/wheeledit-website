@@ -1,9 +1,12 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: xuanhung2598-web/wheeledit-nextjs
   branch: main
-  site_domain: stirring-twilight-62a69f.netlify.app
+  auth_type: implicit
+  app_id: Ov23li4JGW9GHQcWlupGw
 
-publish_mode: editorial_workflow
+# This local_backend setting should be removed or commented out before deploying to production.
+# local_backend: true
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
@@ -11,13 +14,48 @@ public_folder: "/images/uploads"
 collections:
   - name: "blog"
     label: "Blog Posts"
-    folder: "posts"
+    folder: "_posts"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string", hint: "Blog post title" }
-      - { label: "Publish Date", name: "date", widget: "datetime", hint: "Date published" }
-      - { label: "Author", name: "author", widget: "string", hint: "Post author" }
-      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary" }
-      - { label: "Featured Image", name: "image", widget: "image", hint: "Main blog image" }
-      - { label: "Body", name: "body", widget: "markdown", hint: "Main content of the post" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Image URL (from Flickr)", name: "image", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "pages"
+    label: "Page Content"
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "_content/homepage.json"
+        fields:
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Before Image URL", name: "before", widget: "string", required: false }
+              - { label: "After Image URL", name: "after", widget: "string", required: false }
+              - { label: "Video URL (YouTube Embed)", name: "videoUrl", widget: "string", required: false }
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Author", name: "author", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Avatar URL", name: "avatar", widget: "string" }
+          - label: "Social Links"
+            name: "socialLinks"
+            widget: "object"
+            fields:
+              - { label: "Facebook URL", name: "facebook", widget: "string" }
+              - { label: "Instagram URL", name: "instagram", widget: "string" }
+              - { label: "YouTube URL", name: "youtube", widget: "string" }
+              - { label: "WhatsApp URL", name: "whatsapp", widget: "string" }

@@ -5,15 +5,17 @@ import dynamic from 'next/dynamic';
 import Header from './Header';
 import Footer from './Footer';
 import PageProgressBar from './PageProgressBar';
+import { SocialLinks } from '../types';
 
 // Lazy-load the Modal component
 const Modal = dynamic(() => import('./Modal'), { ssr: false });
 
 interface MainLayoutProps {
   children: React.ReactNode;
+  socialLinks: SocialLinks;
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+const MainLayout: React.FC<MainLayoutProps> = ({ children, socialLinks }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <Suspense fallback={null}>
         <PageProgressBar />
       </Suspense>
-      <Header onOpenModal={() => setIsModalOpen(true)} />
+      <Header onOpenModal={() => setIsModalOpen(true)} socialLinks={socialLinks} />
       <main>{children}</main>
       <Footer />
       {isModalOpen && <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />}

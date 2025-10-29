@@ -21,3 +21,17 @@ export interface Service {
   after?: string;
   videoUrl?: string;
 }
+
+export interface Testimonial {
+  quote: string;
+  author: string;
+  role: string;
+  avatar: string;
+}
+
+export interface SocialLinks {
+  facebook: string;
+  instagram: string;
+  youtube: string;
+  whatsapp: string;
+}

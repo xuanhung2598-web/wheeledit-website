@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import MainLayout from '../components/MainLayout';
 import '../globals.css';
-import Script from 'next/script';
+import { getHomePageContent } from '../lib/content';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -50,13 +50,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { socialLinks } = getHomePageContent();
   return (
     <html lang="en" className={poppins.variable}>
-      <head>
-        <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="beforeInteractive" />
-      </head>
       <body className="font-sans">
-        <MainLayout>
+        <MainLayout socialLinks={socialLinks}>
           {children}
         </MainLayout>
       </body>
