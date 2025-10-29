@@ -4,7 +4,6 @@ import matter from 'gray-matter';
 import { Post, PostMeta } from '../types';
 import { cache } from 'react';
 
-// FIX: Use the global `process` object, as the explicit import was causing type resolution issues.
 const postsDirectory = path.join(process.cwd(), '_posts');
 
 export const getAllPosts = cache((): Post[] => {
