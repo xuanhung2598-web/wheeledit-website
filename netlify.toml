@@ -1,13 +1,17 @@
-# ===============================
-# Netlify config for Decap CMS backend only
-# ===============================
+# ==============================
+# Netlify build config for Next.js full site + Decap CMS
+# ==============================
 
 [build]
-  # ⚠️ Không build Next.js tại đây
-  publish = "public"
-  command = "echo 'This site is only used for Decap CMS backend (Identity + Git Gateway)'"
+  command = "npm run build"
+  publish = ".next"  # 👈 hoặc "out" nếu bạn dùng "next export"
 
-# ✅ Cho phép xác thực từ domain Cloudflare Pages
+# Nếu bạn dùng Next.js 13+ App Router (build mặc định SSR)
+# thì giữ ".next" — Netlify sẽ tự xử lý qua plugin Next.js.
+
+# --------------------------------
+# Cho phép xác thực từ domain chính
+# --------------------------------
 [[redirects]]
   from = "https://wheeledit.com/*"
   to = "https://wheeledit.netlify.app/:splat"
@@ -26,7 +30,9 @@
   status = 200
   force = true
 
-# Security headers (optional)
+# --------------------------------
+# Security headers
+# --------------------------------
 [[headers]]
   for = "/*"
   [headers.values]
