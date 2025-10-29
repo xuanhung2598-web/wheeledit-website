@@ -3,8 +3,10 @@ import path from 'path';
 import matter from 'gray-matter';
 import { Post, PostMeta } from '../types';
 import { cache } from 'react';
+// FIX: Explicitly import `process` to ensure correct typings for `process.cwd()`
+// and resolve "Property 'cwd' does not exist on type 'Process'" error.
+import process from 'process';
 
-// Fix: The import of `cwd` from 'process' was incorrect. `process.cwd()` is globally available in Node.js.
 const postsDirectory = path.join(process.cwd(), '_posts');
 
 export const getAllPosts = cache((): Post[] => {

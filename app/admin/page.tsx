@@ -1,29 +1,14 @@
-import type { Metadata } from 'next';
-import Head from 'next/head';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Admin',
-};
+import Script from 'next/script';
 
 const AdminPage = () => {
+  // This component will be replaced by the Decap CMS UI once the script loads.
+  // The Netlify Identity Widget script is already loaded from the root layout,
+  // so both scripts can now interact in the same document context.
   return (
     <>
-      <Head>
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
-      </Head>
-      <iframe 
-        src="/admin/index.html" 
-        style={{
-          width: '100%',
-          height: '100vh',
-          border: 'none',
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          zIndex: 1000
-        }}
-        title="Content Manager"
-      ></iframe>
+      <Script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js" />
     </>
   );
 };
