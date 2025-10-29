@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: xuanhung2598-web/wheeledit-nextjs
+  repo: xuanhung2598-web/wheeledit-website
   branch: main
   base_url: https://decap-cms-oauth.vercel.app # <-- THIS LINE FIXES THE LOGIN ISSUE
   auth_type: implicit
