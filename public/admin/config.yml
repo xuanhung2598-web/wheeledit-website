@@ -6,17 +6,24 @@ backend:
   auth_endpoint: /auth
   cms_label_prefix: "WheelEdit"
 
-# This local_backend setting is disabled for production.
-# Enable it for local development only.
+# ===============================
+# ⚙️ CMS SETTINGS
+# ===============================
+# Local mode (optional for dev)
 # local_backend: true
 
+# Uploads path
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
+# ===============================
+# 📝 COLLECTIONS
+# ===============================
 collections:
+  # BLOG POSTS
   - name: "blog"
     label: "Blog Posts"
-    folder: "_posts"
+    folder: "public/data/posts"
     create: true
     slug: "{{slug}}"
     fields:
@@ -28,12 +35,14 @@ collections:
       - { label: "Image URL (from Flickr)", name: "image", widget: "string" }
       - { label: "Tags", name: "tags", widget: "list" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  # STATIC JSON PAGES
   - name: "pages"
     label: "Page Content"
     files:
       - label: "Homepage"
         name: "homepage"
-        file: "_content/homepage.json"
+        file: "public/data/homepage.json"
         fields:
           - label: "Services"
             name: "services"
@@ -45,6 +54,7 @@ collections:
               - { label: "Before Image URL", name: "before", widget: "string", required: false }
               - { label: "After Image URL", name: "after", widget: "string", required: false }
               - { label: "Video URL (YouTube Embed)", name: "videoUrl", widget: "string", required: false }
+
           - label: "Testimonials"
             name: "testimonials"
             widget: "list"
@@ -53,6 +63,7 @@ collections:
               - { label: "Author", name: "author", widget: "string" }
               - { label: "Role", name: "role", widget: "string" }
               - { label: "Avatar URL", name: "avatar", widget: "string" }
+
           - label: "Social Links"
             name: "socialLinks"
             widget: "object"
