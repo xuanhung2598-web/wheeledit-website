@@ -2,8 +2,10 @@ backend:
   name: github
   repo: xuanhung2598-web/wheeledit-website
   branch: main
-  base_url: https://cms.wheeledit.com  # hoặc https://decap-proxy.xuanhung2598.workers.dev
-  auth_type: implicit
+  base_url: https://decap-proxy.xuanhung2598.workers.dev
+  auth_endpoint: /auth
+  cms_label_prefix: "WheelEdit"
+
 # This local_backend setting is disabled for production.
 # Enable it for local development only.
 # local_backend: true
