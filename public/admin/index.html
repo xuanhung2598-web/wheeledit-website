@@ -7,23 +7,9 @@
   <link rel="icon" href="/favicon.ico" />
   <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
 
-  <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
-    
-    // Cho phép tải script từ các CDN và Cloudflare
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com/ https://cdn.jsdelivr.net/ https://static.cloudflareinsights.com;
-    
-    // Cho phép Decap CMS kết nối đến GitHub API và Workers Proxy của bạn
-    connect-src 'self' https://api.github.com https://decap-proxy.xuanthung2598.workers.dev;
-    
-    // Cho phép tải tài nguyên hình ảnh (nếu cần)
-    img-src 'self' data: https:; 
-    
-    // Các nguồn khác: bạn có thể tùy chỉnh thêm nếu Decap CMS có dùng font/style bên ngoài
-    style-src 'self' 'unsafe-inline'; 
-    font-src 'self' data:;
-  ">
-  </head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com/ https://cdn.jsdelivr.net/ https://static.cloudflareinsights.com; connect-src 'self' https://api.github.com https://decap-proxy.xuanthung2598.workers.dev; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data: https://fonts.gstatic.com;">
+  
+</head>
 <body>
   <script src="https://unpkg.com/decap-cms@3.0.8/dist/decap-cms.js"></script>
   <script>
