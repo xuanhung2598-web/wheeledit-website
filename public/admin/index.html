@@ -1,20 +1,15 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WheelEdit CMS</title>
-  <link rel="icon" href="/favicon.ico" />
-  <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
-
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com/ https://cdn.jsdelivr.net/ https://static.cloudflareinsights.com; connect-src 'self' https://api.github.com https://decap-proxy.xuanthung2598.workers.dev; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data: https://fonts.gstatic.com;">
-  
-</head>
-<body>
-  <script src="https://unpkg.com/decap-cms@3.0.8/dist/decap-cms.js"></script>
-  <script>
-    window.CMS_MANUAL_INIT = true;
-    CMS.init();
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager | WheelEdit</title>
+    <link rel="icon" href="/favicon.ico" />
+    <!-- Kết nối đến file cấu hình CMS -->
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+  </head>
+  <body>
+    <!-- Decap CMS ổn định -->
+    <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
+  </body>
 </html>

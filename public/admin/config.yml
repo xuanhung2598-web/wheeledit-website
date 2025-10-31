@@ -6,14 +6,12 @@ backend:
   auth_endpoint: /auth
   cms_label_prefix: "WheelEdit"
 
-# ===============================
-# ⚙️ CMS SETTINGS
-# ===============================
+# ⚙️ Uploads config
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
+# 📝 Collections
 collections:
-  # BLOG POSTS
   - name: "blog"
     label: "Blog Posts"
     folder: "_posts"
@@ -29,7 +27,6 @@ collections:
       - { label: "Tags", name: "tags", widget: "list" }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  # STATIC JSON PAGES
   - name: "pages"
     label: "Page Content"
     files:
