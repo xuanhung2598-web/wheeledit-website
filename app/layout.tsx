@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import MainLayout from '../components/MainLayout';
 import '../globals.css';
-import { getHomePageContent } from '../lib/content';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -50,11 +49,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { socialLinks } = getHomePageContent();
   return (
     <html lang="en" className={poppins.variable}>
       <body className="font-sans">
-        <MainLayout socialLinks={socialLinks}>
+        <MainLayout>
           {children}
         </MainLayout>
       </body>

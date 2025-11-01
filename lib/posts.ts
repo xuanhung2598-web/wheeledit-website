@@ -3,8 +3,6 @@ import path from 'path';
 import matter from 'gray-matter';
 import { Post, PostMeta } from '../types';
 import { cache } from 'react';
-// FIX: Import 'process' to ensure correct types are used for process.cwd()
-import process from 'process';
 
 const postsDirectory = path.join(process.cwd(), '_posts');
 

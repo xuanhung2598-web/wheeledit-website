@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -5,14 +6,10 @@ import BeforeAfterSlider from './BeforeAfterSlider';
 import Link from 'next/link';
 import Image from 'next/image';
 import AnimateOnScroll from './AnimateOnScroll';
-import { Service, Post, Testimonial, SocialLinks } from '../types';
+import { Service, Post } from '../types';
+import { services, testimonials, socialLinks } from '../lib/data';
 import { FaRocket, FaGem, FaDollarSign, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 
-interface HomePageContent {
-  services: Service[];
-  testimonials: Testimonial[];
-  socialLinks: SocialLinks;
-}
 
 const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ service, reverse = false }) => {
   const openModal = () => window.dispatchEvent(new CustomEvent('open-modal'));
@@ -52,9 +49,7 @@ const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ servic
 };
 
 
-const HomePageClient: React.FC<{ recentPosts: Post[], homePageContent: HomePageContent }> = ({ recentPosts, homePageContent }) => {
-  const { services, testimonials, socialLinks } = homePageContent;
-  
+const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
   const openModal = () => {
     window.dispatchEvent(new CustomEvent('open-modal'));
   };

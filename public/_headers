@@ -1,3 +1,0 @@
-/* 
-  Content-Security-Policy: script-src 'self' https://unpkg.com https://cdn.jsdelivr.net https://decap-proxy.xuanhung2598.workers.dev; connect-src 'self' https://api.github.com https://decap-proxy.xuanhung2598.workers.dev;
-  Access-Control-Allow-Origin: *

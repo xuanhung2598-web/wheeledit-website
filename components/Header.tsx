@@ -4,15 +4,14 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaFacebookF, FaInstagram, FaYoutube, FaBars, FaTimes } from 'react-icons/fa';
-import { SocialLinks } from '../types';
+import { socialLinks } from '../lib/data';
 
 
 interface HeaderProps {
   onOpenModal: () => void;
-  socialLinks: SocialLinks;
 }
 
-const Header: React.FC<HeaderProps> = ({ onOpenModal, socialLinks }) => {
+const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
