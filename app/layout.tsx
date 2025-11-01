@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import MainLayout from '../components/MainLayout';
 import '../globals.css';
+// FIX: Import React to provide the React namespace for types like React.ReactNode.
+import React from 'react';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -9,6 +11,8 @@ const poppins = Poppins({
   display: 'swap',
   variable: '--font-poppins',
 });
+
+const faviconUrl = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23007BFF'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='20' font-weight='bold' fill='white' font-family='sans-serif'>W</text></svg>";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://wheeledit.com'),
@@ -40,6 +44,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: '/',
+  },
+  icons: {
+    icon: faviconUrl,
+    shortcut: faviconUrl,
+    apple: faviconUrl,
   },
 };
 
