@@ -3,6 +3,8 @@ import path from 'path';
 import matter from 'gray-matter';
 import { Post, PostMeta } from '../types';
 import { cache } from 'react';
+// FIX: Import the `process` module to access Node.js-specific properties like `cwd()`. This resolves the error "Property 'cwd' does not exist on type 'Process'".
+import process from 'process';
 
 const postsDirectory = path.join(process.cwd(), '_posts');
 
@@ -30,21 +32,16 @@ export const getAllPosts = cache((): Post[] => {
             author: data.author ?? 'Anonymous',
             excerpt: data.excerpt ?? '',
             image: data.image ?? '/default-image.png',
-            tags: Array.isArray(data.tags) ? data.tags : [], // Ensure tags is always an array
+            // FIX: The `tags` property from gray-matter's data is of type `any`. To satisfy the `PostMeta` type and prevent downstream errors, we must ensure it's a `string[]` by checking if it is an array and filtering out any non-string values.
+            tags: Array.isArray(data.tags) ? data.tags.filter(tag => typeof tag === 'string') : [],
         },
         content: matterResult.content,
     };
     return post;
   });
 
-  // Sort posts by date
-  return allPostsData.sort((a, b) => {
-    if (new Date(a.meta.date) < new Date(b.meta.date)) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  // Sort posts by date in descending order (newest first)
+  return allPostsData.sort((a, b) => new Date(b.meta.date).getTime() - new Date(a.meta.date).getTime());
 });
 
 export const getPostBySlug = cache((slug: string): Post | undefined => {
@@ -62,7 +59,8 @@ export const getPostBySlug = cache((slug: string): Post | undefined => {
                 author: data.author ?? 'Anonymous',
                 excerpt: data.excerpt ?? '',
                 image: data.image ?? '/default-image.png',
-                tags: Array.isArray(data.tags) ? data.tags : [],
+                // FIX: The `tags` property from gray-matter's data is of type `any`. To satisfy the `PostMeta` type and prevent downstream errors, we must ensure it's a `string[]` by checking if it is an array and filtering out any non-string values.
+                tags: Array.isArray(data.tags) ? data.tags.filter(tag => typeof tag === 'string') : [],
             },
             content
         };
@@ -74,6 +72,7 @@ export const getPostBySlug = cache((slug: string): Post | undefined => {
 
 export function getAllTags(): string[] {
   const allPosts = getAllPosts();
-  const allTags = allPosts.flatMap(post => post.meta.tags);
+  // FIX: Replaced `flatMap` with `reduce` to ensure robust type inference. This guarantees `allTags` is typed as `string[]`, resolving the error on the following line where `unknown[]` was being inferred.
+  const allTags = allPosts.reduce<string[]>((acc, post) => acc.concat(post.meta.tags), []);
   return [...new Set(allTags)];
 }
