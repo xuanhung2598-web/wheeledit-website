@@ -4,7 +4,7 @@ title: "Elevate Your Listings: Top 10 Mistakes Real Estate Agents Make with Prop
 date: "2025-11-03"
 author: "Wheeledit Editorial Team"
 excerpt: "Discover the top 10 mistakes real estate agents make with property visuals and how to avoid them to create stunning, engaging listings that attract more buyers."
-image: "https://images.pexels.com/photos/323780/pexels-photo-2025-11-03.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+image: "https://images.pexels.com/photos/18435276/pexels-photo-18435276.jpeg"
 tags: ["real estate", "photo editing", "marketing", "virtual staging"]
 ---
 
