@@ -1,4 +1,11 @@
-import { Service } from '../types';
+import { Service, Testimonial } from '../types';
+
+export const contactInfo = {
+  email: 'contact@wheeledit.com',
+  phoneDisplay: '+84 334 925 969',
+  address: 'Ha Tinh, Vietnam',
+  addressLink: 'https://www.google.com/maps/search/?api=1&query=Ha+Tinh,+Vietnam',
+};
 
 export const services: Service[] = [
     {
@@ -19,15 +26,15 @@ export const services: Service[] = [
       title: 'Flash',
       price: '$0.80 / image',
       description: 'The ultimate technique for natural, crisp, and color-accurate interior photos by combining ambient light with flash shots.',
-      before: 'https://live.staticflickr.com/65535/54897141567_0b7bdfc148_b.jpg',
+      before: 'https://live.staticflickr.com/65535/54829049034_6884ac4613_b.jpg',
       after: 'https://live.staticflickr.com/65535/54827949842_efeeb39a29_b.jpg',
     },
     {
       title: 'AI Enhancement',
-      price: '$0.2 / image',
+      price: '$0.25 / image',
       description: 'Leverage AI for automated enhancements like sky replacement, lighting adjustments, and color grading for stunning results in seconds.',
-      before: 'https://live.staticflickr.com/65535/54861016673_0f59f4200b_b.jpg',
-      after: 'https://live.staticflickr.com/65535/54861015368_9246bfc2eb_b.jpg',
+      before: 'https://picsum.photos/seed/ai-before/800/600',
+      after: 'https://picsum.photos/seed/ai-after/800/600',
     },
      {
       title: 'Video Editing',
@@ -51,7 +58,7 @@ export const services: Service[] = [
     },
   ];
 
-  export const testimonials = [
+  export const testimonials: Testimonial[] = [
     {
       quote: "I've used their HDR editing service multiple times and the results are always consistent. The photos look bright, natural, and professional — exactly what I was hoping for!",
       author: 'Sarah L.',

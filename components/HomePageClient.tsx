@@ -8,8 +8,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import AnimateOnScroll from './AnimateOnScroll';
 import { Service, Post } from '../types';
-import { services, testimonials, socialLinks } from '../lib/data';
-import { FaRocket, FaGem, FaDollarSign, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa';
+import { services, testimonials, socialLinks, contactInfo } from '../lib/data';
+import { FaRocket, FaGem, FaDollarSign, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 
 
 const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ service, reverse = false }) => {
@@ -306,25 +306,25 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
                         <ul className="space-y-4 text-gray-700">
                             <li className="flex items-center gap-3">
                                 <FaEnvelope className="text-[#007BFF] w-5 text-center flex-shrink-0" />
-                                <a href="mailto:contact@wheeledit.com" className="hover:text-[#007BFF] transition-colors">
-                                    contact@wheeledit.com
+                                <a href={`mailto:${contactInfo.email}`} className="hover:text-[#007BFF] transition-colors">
+                                    {contactInfo.email}
                                 </a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <FaWhatsapp className="text-[#007BFF] w-5 text-center flex-shrink-0" />
                                 <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-[#007BFF] transition-colors">
-                                    +84 334 925 969
+                                    {contactInfo.phoneDisplay}
                                 </a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <FaMapMarkerAlt className="text-[#007BFF] w-5 text-center flex-shrink-0" />
                                 <a
-                                    href="https://www.google.com/maps/search/?api=1&query=Ha+Tinh,+Vietnam"
+                                    href={contactInfo.addressLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="hover:text-[#007BFF] transition-colors"
                                 >
-                                    Ha Tinh, Vietnam
+                                    {contactInfo.address}
                                 </a>
                             </li>
                         </ul>
