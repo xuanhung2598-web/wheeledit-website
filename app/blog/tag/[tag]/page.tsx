@@ -6,6 +6,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import TagPageClient from '../../../../components/TagPageClient';
 
+export const revalidate = 3600; // Revalidate at most every hour
+
 // Utility function to convert a tag name into a URL-friendly slug
 const slugify = (tag: string) => tag.toLowerCase().replace(/ /g, '-');
 // Utility function to convert a slug back into a readable tag name

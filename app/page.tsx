@@ -1,6 +1,8 @@
 import { getAllPosts } from '../lib/posts';
 import HomePageClient from '../components/HomePageClient';
 
+export const revalidate = 3600; // Revalidate at most every hour
+
 // This is now the default export and a Server Component
 export default async function Page() {
   const allPosts = getAllPosts();

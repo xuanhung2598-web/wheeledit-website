@@ -1,6 +1,3 @@
-
-
-
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -11,6 +8,8 @@ import type { Metadata } from 'next';
 import RecommendedPosts from '../../../components/RecommendedPosts';
 import AnimateOnScroll from '../../../components/AnimateOnScroll';
 import { notFound } from 'next/navigation';
+
+export const revalidate = 3600; // Revalidate at most every hour
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
