@@ -306,8 +306,8 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
                         <ul className="space-y-4 text-gray-700">
                             <li className="flex items-center gap-3">
                                 <FaEnvelope className="text-[#007BFF] w-5 text-center flex-shrink-0" />
-                                <a href="mailto:info@wheeledit.com" className="hover:text-[#007BFF] transition-colors">
-                                    info@wheeledit.com
+                                <a href="mailto:contact@wheeledit.com" className="hover:text-[#007BFF] transition-colors">
+                                    contact@wheeledit.com
                                 </a>
                             </li>
                             <li className="flex items-center gap-3">
