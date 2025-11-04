@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import React, { useState } from 'react';
@@ -303,9 +304,29 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
                         <h3 className="text-2xl font-bold text-gray-800 mb-4">Contact Information</h3>
                         <p className="text-gray-600 mb-6">Have any questions or want to discuss a project? Reach out to us through any of the channels below. We're here to help!</p>
                         <ul className="space-y-4 text-gray-700">
-                            <li className="flex itaems-center gap-3"><FaEnvelope className="text-[#007BFF] w-5 text-center" /> <span>info@wheeledit.com</span></li>
-                            <li className="flex items-center gap-3"><FaPhone className="text-[#007BFF] w-5 text-center" /> <span>+84 334 925 969</span></li>
-                            <li className="flex items-center gap-3"><FaMapMarkerAlt className="text-[#007BFF] w-5 text-center" /> <span>Ha Tinh, Vietnam</span></li>
+                            <li className="flex items-center gap-3">
+                                <FaEnvelope className="text-[#007BFF] w-5 text-center flex-shrink-0" />
+                                <a href="mailto:info@wheeledit.com" className="hover:text-[#007BFF] transition-colors">
+                                    info@wheeledit.com
+                                </a>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <FaWhatsapp className="text-[#007BFF] w-5 text-center flex-shrink-0" />
+                                <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-[#007BFF] transition-colors">
+                                    +84 334 925 969
+                                </a>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <FaMapMarkerAlt className="text-[#007BFF] w-5 text-center flex-shrink-0" />
+                                <a
+                                    href="https://www.google.com/maps/search/?api=1&query=Ha+Tinh,+Vietnam"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-[#007BFF] transition-colors"
+                                >
+                                    Ha Tinh, Vietnam
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div>
