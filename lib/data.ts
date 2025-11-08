@@ -81,7 +81,7 @@ export const services: Service[] = [
 
   export const socialLinks = {
     facebook: 'https://www.facebook.com/wheeledit',
-    instagram: 'https://instagram.com/your-profile',
+    instagram: 'https://www.instagram.com/wheel_editer',
     youtube: 'https://www.youtube.com/@wheelediter',
     whatsapp: 'https://wa.me/84334925969',
   };
