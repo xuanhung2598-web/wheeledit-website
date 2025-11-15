@@ -3,8 +3,8 @@ import path from 'path';
 import matter from 'gray-matter';
 import { Post, PostMeta } from '../types';
 import { cache } from 'react';
-// FIX: Using 'node:process' is the modern, explicit way to import Node.js built-in modules. This prevents potential module resolution conflicts and ensures the correct type definitions for the 'process' object are loaded, resolving the error.
-import process from 'node:process';
+// FIX: Property 'cwd' does not exist on type 'Process'. Explicitly importing `process` from the 'process' module ensures that the Node.js-specific version is used, which includes the `cwd` method.
+import process from 'process';
 
 const postsDirectory = path.join(process.cwd(), '_posts');
 
@@ -101,24 +101,50 @@ function injectInternalLinks(content: string, currentSlug: string, allPosts: Pos
             return part;
         }
 
-        let newPart = part;
-        for (const keyword of sortedKeywords) {
-            // Use a case-insensitive check for the Set to ensure each keyword is only linked once
-            const lowerKeyword = keyword.toLowerCase();
-            if (replacedKeywords.has(lowerKeyword)) {
-                continue;
+        let processedChunk = '';
+        let remainingChunk = part;
+
+        while (remainingChunk.length > 0) {
+            let bestMatch: { keyword: string; match: RegExpExecArray; index: number } | null = null;
+
+            // Find the earliest match from all available keywords in the current chunk.
+            // Because keywords are sorted by length, this will implicitly prefer the longest match if multiple keywords start at the same index.
+            for (const keyword of sortedKeywords) {
+                const lowerKeyword = keyword.toLowerCase();
+                if (replacedKeywords.has(lowerKeyword)) {
+                    continue;
+                }
+
+                const regex = new RegExp(`\\b(${keyword})\\b`, 'i');
+                const match = regex.exec(remainingChunk);
+
+                if (match) {
+                    if (!bestMatch || match.index < bestMatch.index) {
+                        bestMatch = { keyword, match, index: match.index };
+                    }
+                }
             }
 
-            // Regex to find the keyword as a whole word, case-insensitive
-            const regex = new RegExp(`\\b(${keyword})\\b`, 'i');
-            if (regex.test(newPart)) {
-                const url = allKeywords[keyword];
-                // Replace only the first match found in this text part
-                newPart = newPart.replace(regex, `[$1](${url})`);
+            if (bestMatch) {
+                const originalText = bestMatch.match[1];
+                const url = allKeywords[bestMatch.keyword];
+                const lowerKeyword = bestMatch.keyword.toLowerCase();
+                
+                // Append text before the match
+                processedChunk += remainingChunk.substring(0, bestMatch.index);
+                // Append the new link
+                processedChunk += `[${originalText}](${url})`;
+                // Update the remaining part of the string to search after the replaced keyword
+                remainingChunk = remainingChunk.substring(bestMatch.index + originalText.length);
+                // Mark this keyword as used FOR THE ENTIRE ARTICLE to prevent re-linking
                 replacedKeywords.add(lowerKeyword);
+            } else {
+                // No more available keywords found in this chunk, append the rest and exit
+                processedChunk += remainingChunk;
+                remainingChunk = '';
             }
         }
-        return newPart;
+        return processedChunk;
     });
 
     return processedParts.join('');
