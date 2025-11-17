@@ -112,7 +112,7 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
   return (
     <>
       {/* Hero Section */}
-      <section id="hero" className="relative h-[80vh] flex items-center justify-center text-white text-center">
+      <section id="hero" className="relative h-screen flex items-center justify-center text-white text-center">
         <Image
           src="https://live.staticflickr.com/65535/54928312057_6d9393f582_b.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           alt="Beautiful two-story house with a well-manicured lawn under a clear blue sky"
