@@ -114,7 +114,7 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
       {/* Hero Section */}
       <section id="hero" className="relative h-screen flex items-center justify-center text-white text-center">
         <Image
-          src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          src="https://live.staticflickr.com/65535/54929387904_0c6c729557_b.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           alt="Beautiful two-story house with a well-manicured lawn under a clear blue sky"
           fill
           priority
