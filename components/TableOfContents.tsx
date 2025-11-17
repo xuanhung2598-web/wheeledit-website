@@ -34,7 +34,12 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
   
   const headings: Heading[] = matches.map(match => {
     const level = match[1].length; // ## -> 2, ### -> 3
-    const text = match[2].trim();
+    let text = match[2].trim();
+    
+    // FIX: Strip markdown link syntax, keeping only the link text.
+    // e.g., "[Tips](/some-url)" becomes "Tips"
+    text = text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+
     const slug = createSlug(text);
     return { level, text, slug };
   });
