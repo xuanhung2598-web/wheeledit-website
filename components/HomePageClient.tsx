@@ -121,7 +121,7 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
           sizes="100vw"
           className="object-cover -z-10"
         />
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
         <AnimateOnScroll className="relative z-10 p-5 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Professional Real Estate Photo Editing</h1>
           <p className="text-lg md:text-xl mb-8">Stunning, high-quality images that sell properties faster. First edit is on us!</p>
