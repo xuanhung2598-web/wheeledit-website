@@ -14,16 +14,19 @@ const poppins = Poppins({
 
 const faviconUrl = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23007BFF'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='20' font-weight='bold' fill='white' font-family='sans-serif'>W</text></svg>";
 
+const title = 'Real Estate Photo Editing from $0.40 | HDR, Virtual Staging - WheelEdit';
+const description = 'Get professional real estate photos edited in 12 hours. First edit FREE!';
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://wheeledit.com'),
   title: {
-    default: 'WheelEdit | Professional Real Estate Photo Editing',
+    default: title,
     template: '%s | WheelEdit',
   },
-  description: 'Stunning, high-quality images that sell properties faster. We offer fast turnarounds, quality results, and affordable pricing for real estate photography.',
+  description: description,
   openGraph: {
-    title: 'WheelEdit | Professional Real Estate Photo Editing',
-    description: 'Stunning, high-quality images that sell properties faster.',
+    title: title,
+    description: description,
     url: 'https://wheeledit.com',
     siteName: 'WheelEdit',
     images: [
@@ -38,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WheelEdit | Professional Real Estate Photo Editing',
-    description: 'Stunning, high-quality images that sell properties faster.',
+    title: title,
+    description: description,
     images: ['/og-image.png'], // Assumes a default OG image exists
   },
   alternates: {
@@ -52,6 +55,34 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'WheelEdit',
+  url: 'https://wheeledit.com',
+  logo: 'https://wheeledit.com/logo.png',
+  priceRange: '$',
+  image: 'https://wheeledit.com/og-image.png',
+  description: description,
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'VN'
+  },
+  offers: {
+    '@type': 'Offer',
+    itemOffered: {
+      '@type': 'Service',
+      name: 'Real Estate Photo Editing'
+    },
+    priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: '0.00',
+        priceCurrency: 'USD',
+        valueAddedTaxIncluded: 'False'
+    },
+    name: 'First Edit Free'
+  }
+};
 
 export default function RootLayout({
   children,
@@ -61,6 +92,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable}>
       <body className="font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          key="json-ld-main"
+        />
         <MainLayout>
           {children}
         </MainLayout>

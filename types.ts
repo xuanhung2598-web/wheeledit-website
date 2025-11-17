@@ -2,6 +2,7 @@ export interface PostMeta {
   slug: string;
   title: string;
   date: string;
+  updated?: string; // Optional field for last updated date
   author: string;
   excerpt: string;
   image: string;

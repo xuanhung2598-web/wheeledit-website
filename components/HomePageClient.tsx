@@ -112,16 +112,16 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
   return (
     <>
       {/* Hero Section */}
-      <section id="hero" className="relative h-screen flex items-center justify-center text-white text-center">
+      <section id="hero" className="relative h-[80vh] flex items-center justify-center text-white text-center">
         <Image
-          src="https://live.staticflickr.com/65535/54928312057_6d9393f582_b.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           alt="Beautiful two-story house with a well-manicured lawn under a clear blue sky"
           fill
           priority
           sizes="100vw"
           className="object-cover -z-10"
         />
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
         <AnimateOnScroll className="relative z-10 p-5 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Professional Real Estate Photo Editing</h1>
           <p className="text-lg md:text-xl mb-8">Stunning, high-quality images that sell properties faster. First edit is on us!</p>
