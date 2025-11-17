@@ -9,6 +9,13 @@ export const contactInfo = {
 
 export const services: Service[] = [
     {
+      title: 'AI Enhancement',
+      price: '$0.25 / image',
+      description: 'Leverage AI for automated enhancements like sky replacement, lighting adjustments, and color grading for stunning results in seconds.',
+      before: 'https://live.staticflickr.com/65535/54861016673_0f59f4200b_b.jpg',
+      after: 'https://live.staticflickr.com/65535/54861015368_9246bfc2eb_b.jpg',
+    },
+     {
       title: 'Single Exposure',
       price: '$0.40 / image',
       description: 'Basic enhancements including color correction, sharpening, and lens distortion removal for a clean, vibrant look.',
@@ -28,13 +35,6 @@ export const services: Service[] = [
       description: 'The ultimate technique for natural, crisp, and color-accurate interior photos by combining ambient light with flash shots.',
       before: 'https://live.staticflickr.com/65535/54897141567_0b7bdfc148_b.jpg',
       after: 'https://live.staticflickr.com/65535/54827949842_efeeb39a29_b.jpg',
-    },
-    {
-      title: 'AI Enhancement',
-      price: '$0.2 / image',
-      description: 'Leverage AI for automated enhancements like sky replacement, lighting adjustments, and color grading for stunning results in seconds.',
-      before: 'https://live.staticflickr.com/65535/54861016673_0f59f4200b_b.jpg',
-      after: 'https://live.staticflickr.com/65535/54861015368_9246bfc2eb_b.jpg',
     },
      {
       title: 'Video Editing',
