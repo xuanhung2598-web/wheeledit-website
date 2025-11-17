@@ -29,11 +29,12 @@ export const getAllPosts = cache((): Post[] => {
             slug,
             title: data.title ?? 'Untitled Post',
             date: data.date ?? '1970-01-01',
+            updated: data.updated,
             author: data.author ?? 'Anonymous',
             excerpt: data.excerpt ?? '',
             image: data.image ?? '/default-image.png',
-            // The `tags` property from gray-matter's data is of type `any`. To satisfy the `PostMeta` type and prevent downstream errors, we must ensure it's a `string[]` by checking if it is an array and filtering out any non-string values.
-            tags: Array.isArray(data.tags) ? data.tags.filter(tag => typeof tag === 'string') : [],
+            // FIX: The `tags` property from gray-matter's data is of type `any`. Using a type guard in the filter ensures the resulting array is correctly typed as `string[]`.
+            tags: Array.isArray(data.tags) ? data.tags.filter((tag: unknown): tag is string => typeof tag === 'string') : [],
         },
         content: matterResult.content,
     };
@@ -69,7 +70,11 @@ function injectInternalLinks(content: string, currentSlug: string, allPosts: Pos
     };
 
     // Automatically create topic keywords from all existing tags in the blog
-    const topicKeywords: string[] = Array.from(new Set(allPosts.flatMap(p => p.meta.tags)));
+    // FIX: Add a type guard to ensure that the result of flatMap is a string array, preventing potential type errors.
+    const topicKeywords: string[] = Array.from(new Set(
+        allPosts.flatMap(p => p.meta.tags)
+            .filter((tag: unknown): tag is string => typeof tag === 'string')
+    ));
 
     const allKeywords: { [key: string]: string } = { ...serviceKeywords };
     
@@ -166,11 +171,12 @@ export const getPostBySlug = cache((slug: string): Post | undefined => {
                 slug, 
                 title: data.title ?? 'Untitled Post',
                 date: data.date ?? '1970-01-01',
+                updated: data.updated,
                 author: data.author ?? 'Anonymous',
                 excerpt: data.excerpt ?? '',
                 image: data.image ?? '/default-image.png',
-                // The `tags` property from gray-matter's data is of type `any`. To satisfy the `PostMeta` type and prevent downstream errors, we must ensure it's a `string[]` by checking if it is an array and filtering out any non-string values.
-                tags: Array.isArray(data.tags) ? data.tags.filter(tag => typeof tag === 'string') : [],
+                // FIX: The `tags` property from gray-matter's data is of type `any`. Using a type guard in the filter ensures the resulting array is correctly typed as `string[]`.
+                tags: Array.isArray(data.tags) ? data.tags.filter((tag: unknown): tag is string => typeof tag === 'string') : [],
             },
             content
         };
@@ -182,7 +188,7 @@ export const getPostBySlug = cache((slug: string): Post | undefined => {
 
 export function getAllTags(): string[] {
   const allPosts = getAllPosts();
-  // Using `flatMap` to gather all tags. A type guard in the subsequent `filter` call ensures that the resulting array is of type `string[]`, resolving potential upstream type issues from gray-matter.
+  // FIX: The complex logic inside flatMap can confuse TypeScript's type inference. Moving the type guard to a filter call after flatMap simplifies the logic and ensures the final array is correctly typed as string[].
   const allTags = allPosts
     .flatMap(post => post.meta.tags)
     .filter((tag: unknown): tag is string => typeof tag === 'string');
