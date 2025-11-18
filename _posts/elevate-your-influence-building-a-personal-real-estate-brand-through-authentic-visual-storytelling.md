@@ -3,7 +3,7 @@ title: "Elevate Your Influence: Building a Personal Real Estate Brand Through Au
 date: "2025-11-18"
 author: "Stacy Render"
 excerpt: "Discover how Building a personal real estate brand through authentic visual storytelling can set you apart, fostering trust and connection with clients through powerful imagery."
-image: "https://images.pexels.com/photos/5217322/pexels-photo-5217322.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+image: "https://images.pexels.com/photos/34727284/pexels-photo-34727284.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 tags:
   - "Real Estate Branding"
   - "Visual Storytelling"
