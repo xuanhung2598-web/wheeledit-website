@@ -79,5 +79,5 @@ Don't let post-production be the anchor that slows down your business growth. It
 
 **Ready to see the difference professional outsourcing can make?**
 
-### 👉 **[Get Your 3-Photo FREE Trial Now]** 👈
+### 👉 **[Get Your 3-5 Photo FREE Trial Now]** 👈
 *Test our quality, speed, and precision. No credit card required. Just upload your files, and let us handle the rest.*
