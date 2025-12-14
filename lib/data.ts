@@ -10,7 +10,7 @@ export const contactInfo = {
 export const services: Service[] = [
     {
       title: 'AI Enhancement',
-      
+      price: '$0.25 / image',
       description: 'Leverage AI for automated enhancements like sky replacement, lighting adjustments, and color grading for stunning results in seconds.',
       before: 'https://live.staticflickr.com/65535/54861016673_0f59f4200b_b.jpg',
       after: 'https://live.staticflickr.com/65535/54861015368_9246bfc2eb_b.jpg',
