@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import React, { useState } from 'react';
@@ -38,8 +37,7 @@ const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ servic
         )}
       </div>
       <div className={`lg:col-span-2 text-center sm:text-left ${textOrder}`}>
-        <h3 className="text-3xl font-bold text-gray-800">{service.title}</h3>
-        <p className="text-2xl font-semibold text-[#007BFF] my-3">{service.price}</p>
+        <h3 className="text-3xl font-bold text-gray-800 mb-4">{service.title}</h3>
         <p className="text-gray-600 mb-6 text-lg">{service.description}</p>
         <button onClick={openModal} className="cta-button bg-[#007BFF] text-white px-7 py-3 rounded-lg font-semibold hover:bg-[#0056b3] transition-all duration-300 hover:-translate-y-0.5 shadow-md">
           Get a Free Test
@@ -112,7 +110,7 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
   return (
     <>
       {/* Hero Section */}
-      <section id="hero" className="relative h-screen flex items-center justify-center text-white text-center">
+      <section id="hero" className="relative h-[80vh] flex items-center justify-center text-white text-center">
         <Image
           src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           alt="Beautiful two-story house with a well-manicured lawn under a clear blue sky"

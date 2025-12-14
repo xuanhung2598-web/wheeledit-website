@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import MainLayout from '../components/MainLayout';
@@ -14,7 +15,7 @@ const poppins = Poppins({
 
 const faviconUrl = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23007BFF'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='20' font-weight='bold' fill='white' font-family='sans-serif'>W</text></svg>";
 
-const title = 'Real Estate Photo Editing from $0.40 | HDR, Virtual Staging - WheelEdit';
+const title = 'Professional Real Estate Photo Editing | HDR, Virtual Staging - WheelEdit';
 const description = 'Get professional real estate photos edited in 12 hours. First edit FREE!';
 
 export const metadata: Metadata = {
@@ -61,7 +62,6 @@ const jsonLd = {
   name: 'WheelEdit',
   url: 'https://wheeledit.com',
   logo: 'https://wheeledit.com/logo.png',
-  priceRange: '$',
   image: 'https://wheeledit.com/og-image.png',
   description: description,
   address: {

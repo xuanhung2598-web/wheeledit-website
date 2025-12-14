@@ -10,49 +10,43 @@ export const contactInfo = {
 export const services: Service[] = [
     {
       title: 'AI Enhancement',
-      price: '$0.25 / image',
-      description: 'Leverage AI for automated enhancements like sky replacement, lighting adjustments, and color grading for stunning results in seconds.',
+      description: 'Instantly elevate standard photos. We use advanced AI tools for sky replacement, lawn greening, and lighting correction to make your exterior shots pop.',
       before: 'https://live.staticflickr.com/65535/54861016673_0f59f4200b_b.jpg',
       after: 'https://live.staticflickr.com/65535/54861015368_9246bfc2eb_b.jpg',
     },
-     {
+    {
       title: 'Single Exposure',
-      price: '$0.40 / image',
-      description: 'Basic enhancements including color correction, sharpening, and lens distortion removal for a clean, vibrant look.',
+      description: 'Perfect for clean, natural-looking results. We correct colors, fix perspective, and sharpen details to deliver a polished image suitable for standard listings.',
       before: 'https://live.staticflickr.com/65535/54829022669_6e6416f3bd_b.jpg',
       after: 'https://live.staticflickr.com/65535/54829022684_1289cf76ba_b.jpg',
     },
     {
       title: 'HDR Merge',
-      price: '$0.60 / image',
-      description: 'We blend multiple exposures to create a single, perfectly lit image with balanced light and vibrant colors.',
+      description: 'Maximize dynamic range. We blend multiple exposures to reveal details in both shadows and highlights, ensuring clear window views and perfectly balanced lighting.',
       before: 'https://live.staticflickr.com/65535/54827937127_f75707f023_b.jpg',
       after: 'https://live.staticflickr.com/65535/54829036884_0985b6af3f_b.jpg',
     },
     {
       title: 'Flash',
-      price: '$0.80 / image',
-      description: 'The ultimate technique for natural, crisp, and color-accurate interior photos by combining ambient light with flash shots.',
+      description: 'The gold standard for interiors. We hand-blend flash and ambient light to achieve accurate colors, crisp textures, and a high-end magazine finish.',
       before: 'https://live.staticflickr.com/65535/54897141567_0b7bdfc148_b.jpg',
       after: 'https://live.staticflickr.com/65535/54827949842_efeeb39a29_b.jpg',
     },
+    
      {
       title: 'Video Editing',
-      price: '$20.00 / video',
-      description: 'Professional cuts, color grading, and stabilization for engaging property tours that captivate buyers.',
+      description: 'Turn raw footage into a cinematic tour. Includes stabilization, color grading, music sync, and transitions to tell a compelling story of the property.',
       videoUrl: "https://www.youtube.com/embed/VKAKbueezMk?autoplay=1&mute=1&loop=1&playlist=VKAKbueezMk"
     },
     {
       title: 'Object Removal',
-      price: '$1.00 - $10.00 / image',
-      description: 'Declutter your shots by seamlessly removing unwanted objects, from cords to furniture, for a cleaner final image.',
+      description: 'Erase clutter seamlessly. From stray cords to unwanted furniture, we clean up the scene to highlight the property\'s actual space and remove distractions.',
       before: 'https://live.staticflickr.com/65535/54829080033_c23baa136b_b.jpg',
       after: 'https://live.staticflickr.com/65535/54828818451_5ea312f454_b.jpg',
     },
     {
       title: 'Virtual Staging',
-      price: '$10.00 / image',
-      description: 'Transform empty rooms into beautifully furnished spaces that attract more buyers and help them visualize their future home.',
+      description: 'Bring empty rooms to life. We add photorealistic stylish furniture to help buyers visualize the home\'s potential and create an immediate emotional connection.',
       before: 'https://live.staticflickr.com/65535/54829166810_16e0cbd5ee_b.jpg',
       after: 'https://live.staticflickr.com/65535/54829166930_ed2a3b04bf_b.jpg',
     },

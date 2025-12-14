@@ -16,7 +16,6 @@ export interface Post {
 
 export interface Service {
   title: string;
-  price: string;
   description: string;
   before?: string;
   after?: string;
