@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
+        // CRITICAL: Tắt tối ưu hóa ảnh trên server.
+        // Trên Cloudflare Pages Free, mỗi yêu cầu ảnh qua Next.js Image component 
+        // sẽ tốn 1 Function Invocation. Tắt cái này sẽ cứu 100k request của bạn.
+        unoptimized: true,
         remotePatterns: [
             {
                 protocol: 'https',
