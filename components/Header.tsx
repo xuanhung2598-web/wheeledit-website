@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -5,7 +6,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaFacebookF, FaInstagram, FaYoutube, FaBars, FaTimes } from 'react-icons/fa';
 import { socialLinks } from '../lib/data';
-
 
 interface HeaderProps {
   onOpenModal: () => void;
@@ -28,7 +28,6 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
     };
   }, []);
   
-  // Close mobile menu on navigation
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
@@ -37,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
     { href: isHomePage ? '#services' : '/#services', label: 'Services' },
     { href: isHomePage ? '#about' : '/#about', label: 'Why Us' },
     { href: isHomePage ? '#testimonials' : '/#testimonials', label: 'Testimonials' },
-    { href: '/blog', label: 'Blog' },
+    { href: '/blog/', label: 'Blog' },
     { href: isHomePage ? '#contact' : '/#contact', label: 'Contact' },
   ];
   
@@ -47,24 +46,21 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
   const hamburgerClasses = `focus:outline-none ${isScrolled || isMenuOpen || !isHomePage ? 'text-gray-800' : 'text-white'}`;
   const socialIconClasses = `text-lg transition-colors ${isScrolled || isMenuOpen || !isHomePage ? 'text-gray-600 hover:text-[#007BFF]' : 'text-gray-200 hover:text-white'}`;
 
-
   return (
     <header className={headerClasses}>
       <div className="max-w-7xl mx-auto px-5">
         <div className="flex justify-between items-center h-20">
-          {/* Left: Logo */}
           <div className="flex-1 flex justify-start">
-             <Link href="/" className={logoClasses}>
+             <Link href="/" prefetch={false} className={logoClasses}>
                WheelEdit
              </Link>
           </div>
           
-          {/* Center: Desktop Navigation */}
           <nav className="hidden lg:flex flex-1 justify-center">
             <ul className="flex items-center gap-8">
                 {navLinks.map(link => (
                 <li key={link.label}>
-                    <Link href={link.href} className={linkClasses}>
+                    <Link href={link.href} prefetch={false} className={linkClasses}>
                     {link.label}
                     </Link>
                 </li>
@@ -72,7 +68,6 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
             </ul>
           </nav>
           
-          {/* Right: Socials and CTA */}
           <div className="hidden lg:flex flex-1 justify-end items-center">
             <div className="flex items-center gap-4 mr-5">
                  <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className={socialIconClasses}><FaFacebookF /></a>
@@ -84,7 +79,6 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="lg:hidden">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={hamburgerClasses} aria-label="Toggle menu" aria-expanded={isMenuOpen}>
               {isMenuOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
@@ -93,12 +87,11 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
         </div>
       </div>
       
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="lg:hidden bg-white shadow-lg absolute w-full">
           <nav className="flex flex-col items-center gap-6 py-8">
             {navLinks.map(link => (
-              <Link key={link.href} href={link.href} className="text-lg font-medium text-gray-700 hover:text-[#007BFF]">
+              <Link key={link.href} href={link.href} prefetch={false} className="text-lg font-medium text-gray-700 hover:text-[#007BFF]">
                 {link.label}
               </Link>
             ))}

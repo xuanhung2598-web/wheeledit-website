@@ -1,29 +1,22 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    // Chuyển sang chế độ Web tĩnh hoàn toàn
+    output: 'export',
+    
+    // Cloudflare Pages yêu cầu tắt tối ưu ảnh server-side của Next.js
     images: {
-        // CRITICAL: Tắt tối ưu hóa ảnh trên server.
-        // Trên Cloudflare Pages Free, mỗi yêu cầu ảnh qua Next.js Image component 
-        // sẽ tốn 1 Function Invocation. Tắt cái này sẽ cứu 100k request của bạn.
         unoptimized: true,
         remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'live.staticflickr.com',
-            },
-            {
-                protocol: 'https',
-                hostname: 'images.pexels.com',
-            },
-            {
-                protocol: 'https',
-                hostname: 'i.pravatar.cc',
-            },
-            {
-                protocol: 'https',
-                hostname: 'picsum.photos',
-            }
+            { protocol: 'https', hostname: 'live.staticflickr.com' },
+            { protocol: 'https', hostname: 'images.pexels.com' },
+            { protocol: 'https', hostname: 'i.pravatar.cc' },
+            { protocol: 'https', hostname: 'picsum.photos' }
         ],
     },
+    
+    // Đảm bảo URL luôn kết thúc bằng / (ví dụ: /blog/) giúp SEO và định tuyến tĩnh tốt hơn
+    trailingSlash: true,
 };
 
 export default nextConfig;

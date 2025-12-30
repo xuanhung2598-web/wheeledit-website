@@ -2,15 +2,26 @@
 import { MetadataRoute } from 'next';
  
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://wheeledit.com'; 
- 
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
+        disallow: [
+          '/_next/',
+          '/api/',
+          '/GPTBot',
+          '/ChatGPT-User',
+          '/CCBot',
+          '/Bytespider',
+          '/ImagesiftBot',
+          '/cohere-ai',
+          '/FacebookBot',
+          '/anthropic-ai',
+          '/Claude-Web'
+        ],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: 'https://wheeledit.com/sitemap.xml',
   };
 }
