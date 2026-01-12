@@ -36,7 +36,7 @@ export const services: Service[] = [
      {
       title: 'Video Editing',
       description: 'Turn raw footage into a cinematic tour. Includes stabilization, color grading, music sync, and transitions to tell a compelling story of the property.',
-      videoUrl: "https://www.youtube.com/embed/VKAKbueezMk?autoplay=1&mute=1&loop=1&playlist=VKAKbueezMk"
+      videoUrl: "https://www.youtube.com/embed/mZkP70-IvDg?autoplay=1&mute=1&loop=1&playlist=mZkP70-IvDg"
     },
     {
       title: 'Object Removal',
