@@ -1,3 +1,4 @@
+
 import { Service, Testimonial } from '../types';
 
 export const contactInfo = {
@@ -9,46 +10,78 @@ export const contactInfo = {
 
 export const services: Service[] = [
     {
+      slug: 'ai-enhancement',
       title: 'AI Enhancement',
       description: 'Instantly elevate standard photos. We use advanced AI tools for sky replacement, lawn greening, and lighting correction to make your exterior shots pop.',
       before: 'https://live.staticflickr.com/65535/54861016673_0f59f4200b_b.jpg',
       after: 'https://live.staticflickr.com/65535/54861015368_9246bfc2eb_b.jpg',
+      gallery: [
+        'https://live.staticflickr.com/65535/54861015368_9246bfc2eb_b.jpg',
+        'https://picsum.photos/seed/ai1/1200/800',
+        'https://picsum.photos/seed/ai2/1200/800'
+      ]
     },
     {
+      slug: 'single-exposure',
       title: 'Single Exposure',
       description: 'Perfect for clean, natural-looking results. We correct colors, fix perspective, and sharpen details to deliver a polished image suitable for standard listings.',
       before: 'https://live.staticflickr.com/65535/54829022669_6e6416f3bd_b.jpg',
       after: 'https://live.staticflickr.com/65535/54829022684_1289cf76ba_b.jpg',
+      gallery: [
+        'https://live.staticflickr.com/65535/54829022684_1289cf76ba_b.jpg',
+        'https://picsum.photos/seed/se1/1200/800',
+        'https://picsum.photos/seed/se2/1200/800',
+        'https://picsum.photos/seed/se3/1200/800'
+      ]
     },
     {
+      slug: 'hdr-merge',
       title: 'HDR Merge',
       description: 'Maximize dynamic range. We blend multiple exposures to reveal details in both shadows and highlights, ensuring clear window views and perfectly balanced lighting.',
       before: 'https://live.staticflickr.com/65535/54827937127_f75707f023_b.jpg',
       after: 'https://live.staticflickr.com/65535/54829036884_0985b6af3f_b.jpg',
+      gallery: [
+        'https://live.staticflickr.com/65535/54829036884_0985b6af3f_b.jpg',
+        'https://picsum.photos/seed/hdr1/1200/800',
+        'https://picsum.photos/seed/hdr2/1200/800'
+      ]
     },
     {
+      slug: 'flash',
       title: 'Flash',
       description: 'The gold standard for interiors. We hand-blend flash and ambient light to achieve accurate colors, crisp textures, and a high-end magazine finish.',
       before: 'https://live.staticflickr.com/65535/54897141567_0b7bdfc148_b.jpg',
       after: 'https://live.staticflickr.com/65535/54827949842_efeeb39a29_b.jpg',
+      gallery: [
+        'https://live.staticflickr.com/65535/54827949842_efeeb39a29_b.jpg',
+        'https://picsum.photos/seed/fl1/1200/800'
+      ]
     },
-    
-     {
+    {
+      slug: 'video-editing',
       title: 'Video Editing',
       description: 'Turn raw footage into a cinematic tour. Includes stabilization, color grading, music sync, and transitions to tell a compelling story of the property.',
       videoUrl: "https://www.youtube.com/embed/mZkP70-IvDg?autoplay=1&mute=1&loop=1&playlist=mZkP70-IvDg"
     },
     {
+      slug: 'object-removal',
       title: 'Object Removal',
       description: 'Erase clutter seamlessly. From stray cords to unwanted furniture, we clean up the scene to highlight the property\'s actual space and remove distractions.',
       before: 'https://live.staticflickr.com/65535/54829080033_c23baa136b_b.jpg',
       after: 'https://live.staticflickr.com/65535/54828818451_5ea312f454_b.jpg',
+      gallery: [
+        'https://live.staticflickr.com/65535/54828818451_5ea312f454_b.jpg'
+      ]
     },
     {
+      slug: 'virtual-staging',
       title: 'Virtual Staging',
       description: 'Bring empty rooms to life. We add photorealistic stylish furniture to help buyers visualize the home\'s potential and create an immediate emotional connection.',
       before: 'https://live.staticflickr.com/65535/54829166810_16e0cbd5ee_b.jpg',
       after: 'https://live.staticflickr.com/65535/54829166930_ed2a3b04bf_b.jpg',
+      gallery: [
+        'https://live.staticflickr.com/65535/54829166930_ed2a3b04bf_b.jpg'
+      ]
     },
   ];
 

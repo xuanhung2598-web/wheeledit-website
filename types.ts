@@ -1,8 +1,9 @@
+
 export interface PostMeta {
   slug: string;
   title: string;
   date: string;
-  updated?: string; // Optional field for last updated date
+  updated?: string;
   author: string;
   excerpt: string;
   image: string;
@@ -15,11 +16,13 @@ export interface Post {
 }
 
 export interface Service {
+  slug: string;
   title: string;
   description: string;
   before?: string;
   after?: string;
   videoUrl?: string;
+  gallery?: string[]; // Trở lại dạng mảng các link ảnh đơn giản
 }
 
 export interface Testimonial {
