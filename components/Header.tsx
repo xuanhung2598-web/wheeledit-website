@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FaFacebookF, FaInstagram, FaYoutube, FaBars, FaTimes } from 'icons/fa';
+import { FaFacebookF, FaInstagram, FaYoutube, FaBars, FaTimes } from 'react-icons/fa';
 import { socialLinks } from '../lib/data';
 
 interface HeaderProps {
