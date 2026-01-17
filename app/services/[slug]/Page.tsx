@@ -6,6 +6,7 @@ import ServiceGalleryClient from '../../../components/ServiceGalleryClient';
 import type { Metadata } from 'next';
 
 export async function generateStaticParams() {
+  // Chỉ tạo trang cho những dịch vụ có ảnh trong gallery
   return services
     .filter(s => s.gallery && s.gallery.length > 0)
     .map(service => ({
@@ -14,7 +15,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const service = services.find(s => s.slug === params.slug);
+  const slug = params.slug;
+  const service = services.find(s => s.slug === slug);
   if (!service) return { title: 'Service Not Found' };
 
   return {
@@ -23,14 +25,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-const ServicePage = ({ params }: { params: { slug: string } }) => {
-  const service = services.find(s => s.slug === params.slug);
+export default function ServicePage({ params }: { params: { slug: string } }) {
+  const slug = params.slug;
+  const service = services.find(s => s.slug === slug);
 
   if (!service || !service.gallery) {
     notFound();
   }
 
   return <ServiceGalleryClient service={service} />;
-};
-
-export default ServicePage;
+}

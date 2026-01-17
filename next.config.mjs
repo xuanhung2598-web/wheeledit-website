@@ -15,7 +15,7 @@ const nextConfig = {
         ],
     },
     
-    // Bật trailingSlash để tạo cấu trúc thư mục/index.html, tránh lỗi 404 trên hosting tĩnh
+    // Bật trailingSlash để tạo cấu trúc thư mục/index.html, đây là cách tốt nhất để tránh 404 trên host tĩnh
     trailingSlash: true,
 };
 

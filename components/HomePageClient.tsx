@@ -80,12 +80,8 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
     
     const scriptURL = process.env.NEXT_PUBLIC_SCRIPT_URL;
     if (!scriptURL) {
-      const detailedError = "Configuration error: NEXT_PUBLIC_SCRIPT_URL is not set. Please check your .env.local file and restart the server.";
-      const friendlyError = 'Configuration error. Please contact support.';
-      
-      console.error(detailedError);
       setContactStatus('error');
-      setContactMessage(process.env.NODE_ENV === 'development' ? detailedError : friendlyError);
+      setContactMessage('Configuration error. Please contact support.');
       return;
     }
 
@@ -95,16 +91,15 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
         body: formData,
       });
       setContactStatus('success');
-      setContactMessage('Thank you for your message! We will get back to you shortly.');
+      setContactMessage('Thank you! Your message has been sent.');
       form.reset();
       setTimeout(() => {
         setContactStatus('idle');
         setContactMessage('');
       }, 4000);
     } catch (error) {
-      console.error('Error submitting contact form:', error);
       setContactStatus('error');
-      setContactMessage('Sorry, there was an error sending your message. Please try again.');
+      setContactMessage('Error sending message. Please try again.');
       setTimeout(() => setContactStatus('idle'), 4000);
     }
   };
@@ -124,14 +119,14 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
       {/* Hero Section */}
       <section id="hero" className="relative h-screen flex items-center justify-center text-white text-center">
         <Image
-          src="https://live.staticflickr.com/65535/54928312057_6d9393f582_b.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt="Beautiful two-story house with a well-manicured lawn under a clear blue sky"
+          src="https://live.staticflickr.com/65535/54928312057_6d9393f582_b.jpg"
+          alt="Hero Background"
           fill
           priority
           sizes="100vw"
           className="object-cover -z-10"
         />
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
         <AnimateOnScroll className="relative z-10 p-5 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Professional Real Estate Photo Editing</h1>
           <p className="text-lg md:text-xl mb-8">Stunning, high-quality images that sell properties faster. First edit is on us!</p>
@@ -168,7 +163,7 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
               Why Choose Us?
               <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-1 bg-[#007BFF] rounded-full"></span>
             </h2>
-             <p className='text-lg text-gray-600 mt-8 max-w-3xl mx-auto'>We are a dedicated team of editors who use wheelchairs. Our passion for this work comes from the fact that it is not only what we excel at, but also what helps us sustain ourselves and provide for our families. With years of experience and exceptional skills, we are committed to delivering the highest-quality results tailored to your needs — with the best speed and pricing in the market.</p>
+            <p className='text-lg text-gray-600 mt-8 max-w-3xl mx-auto'>We are a dedicated team of professionals committed to delivering the highest-quality results tailored to your needs — with the best speed and pricing in the market.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <AnimateOnScroll>
@@ -180,18 +175,18 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
                 <p className="text-gray-600">Get your edited photos back within 12-24 hours, so you can list your properties sooner.</p>
               </div>
             </AnimateOnScroll>
-             <AnimateOnScroll delay={0.1}>
+            <AnimateOnScroll delay={0.1}>
               <div className="p-6">
                 <div className="inline-block p-5 bg-blue-100 rounded-full mb-4">
-                   <FaGem className="text-3xl text-[#007BFF]" />
+                  <FaGem className="text-3xl text-[#007BFF]" />
                 </div>
                 <h4 className="text-xl font-bold text-gray-800 mb-2">Quality Results</h4>
                 <p className="text-gray-600">Our meticulous process ensures every detail is perfect, from color correction to window pulls.</p>
               </div>
             </AnimateOnScroll>
-             <AnimateOnScroll delay={0.2}>
-               <div className="p-6">
-                 <div className="inline-block p-5 bg-blue-100 rounded-full mb-4">
+            <AnimateOnScroll delay={0.2}>
+              <div className="p-6">
+                <div className="inline-block p-5 bg-blue-100 rounded-full mb-4">
                   <FaDollarSign className="text-3xl text-[#007BFF]" />
                 </div>
                 <h4 className="text-xl font-bold text-gray-800 mb-2">Affordable Pricing</h4>
@@ -215,7 +210,7 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
             {testimonials.map((testimonial, index) => (
               <AnimateOnScroll key={index} delay={index * 0.1}>
                 <div className="bg-white p-8 rounded-lg border-l-4 border-[#007BFF] shadow-lg h-full">
-                  <Image src={testimonial.avatar} alt={`Photo of ${testimonial.author}, ${testimonial.role}`} width={80} height={80} className="w-20 h-20 rounded-full object-cover mx-auto -mt-16 mb-4 border-4 border-white" />
+                  <Image src={testimonial.avatar} alt={testimonial.author} width={80} height={80} className="w-20 h-20 rounded-full object-cover mx-auto -mt-16 mb-4 border-4 border-white" />
                   <blockquote className="text-gray-600 italic text-center mb-4">"{testimonial.quote}"</blockquote>
                   <cite className="block text-center font-bold text-gray-800">{testimonial.author}</cite>
                   <p className="text-center text-sm text-gray-500">{testimonial.role}</p>
@@ -226,130 +221,92 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
         </div>
       </section>
 
-      {/* From Our Blog Section */}
+      {/* Blog Preview */}
       <section id="blog-preview" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-5">
-            <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold text-gray-800 relative inline-block">
-                    From Our Blog
-                    <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-1 bg-[#007BFF] rounded-full"></span>
-                </h2>
-                <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Tips, trends, and insights from the world of real estate photography and editing.</p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {recentPosts.map((post, index) => (
-                    <AnimateOnScroll key={post.meta.slug} delay={index * 0.1}>
-                        <div className="group bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col h-full">
-                            <Link href={`/blog/${post.meta.slug}/`} aria-label={`Read more about ${post.meta.title}`}>
-                              <Image 
-                                src={post.meta.image} 
-                                alt={post.meta.title} 
-                                width={800} 
-                                height={400} 
-                                className="w-full h-48 object-cover" 
-                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                              />
-                            </Link>
-                            <div className="p-6 flex flex-col flex-grow">
-                                <Link href={`/blog/${post.meta.slug}/`}>
-                                    <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#007BFF] transition-colors duration-300">{post.meta.title}</h3>
-                                </Link>
-                                <p className="text-sm text-gray-500 mb-4">{post.meta.author} on {post.meta.date}</p>
-                                <p className="text-gray-600 mb-4 flex-grow">{post.meta.excerpt}</p>
-                                <Link href={`/blog/${post.meta.slug}/`} className="mt-auto">
-                                  <span className="text-[#007BFF] font-semibold group-hover:underline">Read More &rarr;</span>
-                                </Link>
-                            </div>
-                        </div>
-                    </AnimateOnScroll>
-                ))}
-            </div>
-            <div className="text-center mt-12">
-                <Link href="/blog/" className="cta-button bg-[#007BFF] text-white px-7 py-3 rounded-lg font-semibold hover:bg-[#0056b3] transition-all duration-300 hover:-translate-y-0.5 shadow-md">
-                    View All Posts
-                </Link>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 relative inline-block">
+              From Our Blog
+              <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-1 bg-[#007BFF] rounded-full"></span>
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {recentPosts.map((post, index) => (
+              <AnimateOnScroll key={post.meta.slug} delay={index * 0.1}>
+                <div className="bg-white rounded-xl overflow-hidden shadow-md group">
+                  <Link href={`/blog/${post.meta.slug}/`}>
+                    <div className="relative h-48 overflow-hidden">
+                      <Image src={post.meta.image} alt={post.meta.title} fill className="object-cover transition-transform group-hover:scale-105" />
+                    </div>
+                  </Link>
+                  <div className="p-6">
+                    <Link href={`/blog/${post.meta.slug}/`}>
+                      <h3 className="font-bold text-xl mb-2 hover:text-[#007BFF] transition-colors">{post.meta.title}</h3>
+                    </Link>
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{post.meta.excerpt}</p>
+                    <Link href={`/blog/${post.meta.slug}/`} className="text-[#007BFF] font-semibold text-sm">Read More →</Link>
+                  </div>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
         </div>
       </section>
 
-       {/* Contact Section */}
+      {/* Contact Section */}
       <section id="contact" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-5">
-           <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold text-gray-800 relative inline-block">
-                    Get In Touch
-                    <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-1 bg-[#007BFF] rounded-full"></span>
-                </h2>
-            </div>
-            <div className="grid lg:grid-cols-2 gap-12 bg-gray-50 p-8 md:p-12 rounded-lg shadow-lg">
-                <div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-4">Send Us a Message</h3>
-                    <form id="contact-form" onSubmit={handleContactSubmit}>
-                        <div className="mb-4">
-                           <label htmlFor="name" className="sr-only">Name</label>
-                           <input type="text" id="name" name="name" placeholder="Your Full Name" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#007BFF]" />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="email" className="sr-only">Email</label>
-                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#007BFF]" />
-                        </div>
-                        <div className="mb-4">
-                             <label htmlFor="message" className="sr-only">Message</label>
-                             <textarea id="message" name="message" rows={5} placeholder="How can we help you?" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#007BFF]"></textarea>
-                        </div>
-                        <button type="submit" disabled={contactStatus !== 'idle'} className="cta-button w-full bg-[#007BFF] text-white px-6 py-3.5 rounded-lg font-semibold uppercase text-base tracking-wide hover:bg-[#0056b3] transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed">
-                          {getContactButtonText()}
-                        </button>
-                        <div className="mt-4 text-center h-5">
-                            {contactMessage && (
-                                <p className={`text-sm ${contactStatus === 'success' ? 'text-green-600' : 'text-red-600'}`}>
-                                    {contactMessage}
-                                </p>
-                            )}
-                        </div>
-                    </form>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 relative inline-block">
+              Get In Touch
+              <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-1 bg-[#007BFF] rounded-full"></span>
+            </h2>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-12 bg-gray-50 p-8 md:p-12 rounded-lg shadow-lg">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
+              <form id="contact-form" onSubmit={handleContactSubmit}>
+                <div className="mb-4">
+                  <input type="text" name="name" placeholder="Your Name" required className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#007BFF] outline-none" />
                 </div>
-                <div className="flex flex-col justify-between">
-                    <div className="relative z-10">
-                        <h3 className="text-2xl font-bold text-gray-800 mb-4">Contact Information</h3>
-                        <p className="text-gray-600 mb-6">Have any questions or want to discuss a project? Reach out to us through any of the channels below. We're here to help!</p>
-                        <ul className="space-y-4 text-gray-700">
-                            <li className="flex items-center gap-3">
-                                <FaEnvelope className="text-[#007BFF] w-5 text-center flex-shrink-0" />
-                                <a href={`mailto:${contactInfo.email}`} className="hover:text-[#007BFF] transition-colors relative z-20">
-                                    {contactInfo.email}
-                                </a>
-                            </li>
-                            <li className="flex items-center gap-3">
-                                <FaWhatsapp className="text-[#007BFF] w-5 text-center flex-shrink-0" />
-                                <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-[#007BFF] transition-colors relative z-20">
-                                    {contactInfo.phoneDisplay}
-                                </a>
-                            </li>
-                            <li className="flex items-center gap-3">
-                                <FaMapMarkerAlt className="text-[#007BFF] w-5 text-center flex-shrink-0" />
-                                <a
-                                    href={contactInfo.addressLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-[#007BFF] transition-colors relative z-20"
-                                >
-                                    {contactInfo.address}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="relative z-10 mt-8">
-                        <h4 className="text-xl font-bold text-gray-800 mb-4">Follow Us</h4>
-                        <div className="flex gap-5 text-2xl text-gray-600">
-                            <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#007BFF] transition-colors relative z-20"><FaFacebookF /></a>
-                            <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#007BFF] transition-colors relative z-20"><FaInstagram /></a>
-                            <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-[#007BFF] transition-colors relative z-20"><FaYoutube /></a>
-                            <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#007BFF] transition-colors relative z-20"><FaWhatsapp /></a>
-                        </div>
-                    </div>
+                <div className="mb-4">
+                  <input type="email" name="email" placeholder="Your Email" required className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#007BFF] outline-none" />
                 </div>
+                <div className="mb-4">
+                  <textarea name="message" rows={4} placeholder="Your Message" required className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#007BFF] outline-none"></textarea>
+                </div>
+                <button type="submit" disabled={contactStatus !== 'idle'} className="w-full bg-[#007BFF] text-white py-3 rounded-lg font-bold hover:bg-[#0056b3] transition-colors disabled:bg-gray-400">
+                  {getContactButtonText()}
+                </button>
+                {contactMessage && <p className="mt-4 text-center text-sm text-blue-600">{contactMessage}</p>}
+              </form>
             </div>
+            <div className="flex flex-col justify-center gap-8">
+              <div>
+                <h3 className="text-2xl font-bold mb-4">Contact Details</h3>
+                <ul className="space-y-4">
+                  <li className="flex items-center gap-3">
+                    <FaEnvelope className="text-[#007BFF]" /> <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <FaWhatsapp className="text-[#007BFF]" /> <a href={socialLinks.whatsapp}>{contactInfo.phoneDisplay}</a>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <FaMapMarkerAlt className="text-[#007BFF]" /> {contactInfo.address}
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-4">Follow Us</h3>
+                <div className="flex gap-4 text-2xl">
+                  <a href={socialLinks.facebook} className="hover:text-[#007BFF]"><FaFacebookF /></a>
+                  <a href={socialLinks.instagram} className="hover:text-[#007BFF]"><FaInstagram /></a>
+                  <a href={socialLinks.youtube} className="hover:text-[#007BFF]"><FaYoutube /></a>
+                  <a href={socialLinks.whatsapp} className="hover:text-[#007BFF]"><FaWhatsapp /></a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
