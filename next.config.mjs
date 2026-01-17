@@ -15,8 +15,9 @@ const nextConfig = {
         ],
     },
     
-    // Bật trailingSlash để tạo cấu trúc thư mục/index.html, đây là cách tốt nhất để tránh 404 trên host tĩnh
-    trailingSlash: true,
+    // Tắt trailingSlash (mặc định là false) để tạo tệp dạng services/slug.html
+    // Điều này đồng bộ với các link footer đang hoạt động tốt của bạn
+    trailingSlash: false,
 };
 
 export default nextConfig;

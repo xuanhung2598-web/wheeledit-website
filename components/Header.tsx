@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
     { href: isHomePage ? '#services' : '/#services', label: 'Services' },
     { href: isHomePage ? '#about' : '/#about', label: 'Why Us' },
     { href: isHomePage ? '#testimonials' : '/#testimonials', label: 'Testimonials' },
-    { href: '/blog/', label: 'Blog' },
+    { href: '/blog', label: 'Blog' },
     { href: isHomePage ? '#contact' : '/#contact', label: 'Contact' },
   ];
   
