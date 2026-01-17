@@ -16,13 +16,13 @@ export interface Post {
 }
 
 export interface Service {
-  slug: string;
+  slug: string; // Bắt buộc phải có để tạo link
   title: string;
   description: string;
   before?: string;
   after?: string;
   videoUrl?: string;
-  gallery?: string[]; // Trở lại dạng mảng các link ảnh đơn giản
+  gallery?: string[]; // Mảng chứa các link ảnh
 }
 
 export interface Testimonial {

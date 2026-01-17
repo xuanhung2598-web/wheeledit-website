@@ -30,8 +30,7 @@ export const services: Service[] = [
       gallery: [
         'https://live.staticflickr.com/65535/54829022684_1289cf76ba_b.jpg',
         'https://picsum.photos/seed/se1/1200/800',
-        'https://picsum.photos/seed/se2/1200/800',
-        'https://picsum.photos/seed/se3/1200/800'
+        'https://picsum.photos/seed/se2/1200/800'
       ]
     },
     {
@@ -42,8 +41,7 @@ export const services: Service[] = [
       after: 'https://live.staticflickr.com/65535/54829036884_0985b6af3f_b.jpg',
       gallery: [
         'https://live.staticflickr.com/65535/54829036884_0985b6af3f_b.jpg',
-        'https://picsum.photos/seed/hdr1/1200/800',
-        'https://picsum.photos/seed/hdr2/1200/800'
+        'https://picsum.photos/seed/hdr1/1200/800'
       ]
     },
     {
@@ -53,8 +51,7 @@ export const services: Service[] = [
       before: 'https://live.staticflickr.com/65535/54897141567_0b7bdfc148_b.jpg',
       after: 'https://live.staticflickr.com/65535/54827949842_efeeb39a29_b.jpg',
       gallery: [
-        'https://live.staticflickr.com/65535/54827949842_efeeb39a29_b.jpg',
-        'https://picsum.photos/seed/fl1/1200/800'
+        'https://live.staticflickr.com/65535/54827949842_efeeb39a29_b.jpg'
       ]
     },
     {
@@ -85,30 +82,30 @@ export const services: Service[] = [
     },
   ];
 
-  export const testimonials: Testimonial[] = [
-    {
-      quote: "I've used their HDR editing service multiple times and the results are always consistent. The photos look bright, natural, and professional — exactly what I was hoping for!",
-      author: 'Sarah L.',
-      role: 'Real Estate Agent',
-      avatar: 'https://i.pravatar.cc/150?img=47'
-    },
-    {
-      quote: "The turnaround speed really impressed me. I sent a large batch and got everything back the next day with perfect edits. Reliable and easy to work with.",
-      author: 'Mark S.',
-      role: 'Photographer',
-      avatar: 'https://i.pravatar.cc/150?img=54'
-    },
-    {
-      quote: "Their attention to detail is outstanding. Every correction was spot on, and the final images looked better than I expected. Highly recommended.",
-      author: 'Emily R.',
-      role: 'Property Manager',
-      avatar: 'https://i.pravatar.cc/150?img=9'
-    }
-  ];
+export const testimonials: Testimonial[] = [
+  {
+    quote: "I've used their HDR editing service multiple times and the results are always consistent. The photos look bright, natural, and professional.",
+    author: 'Sarah L.',
+    role: 'Real Estate Agent',
+    avatar: 'https://i.pravatar.cc/150?img=47'
+  },
+  {
+    quote: "The turnaround speed really impressed me. I sent a large batch and got everything back the next day.",
+    author: 'Mark S.',
+    role: 'Photographer',
+    avatar: 'https://i.pravatar.cc/150?img=54'
+  },
+  {
+    quote: "Their attention to detail is outstanding. Highly recommended.",
+    author: 'Emily R.',
+    role: 'Property Manager',
+    avatar: 'https://i.pravatar.cc/150?img=9'
+  }
+];
 
-  export const socialLinks = {
-    facebook: 'https://www.facebook.com/wheeledit',
-    instagram: 'https://www.instagram.com/wheel_editer',
-    youtube: 'https://www.youtube.com/@wheelediter',
-    whatsapp: 'https://wa.me/84334925969',
-  };
+export const socialLinks = {
+  facebook: 'https://www.facebook.com/wheeledit',
+  instagram: 'https://www.instagram.com/wheel_editer',
+  youtube: 'https://www.youtube.com/@wheelediter',
+  whatsapp: 'https://wa.me/84334925969',
+};
