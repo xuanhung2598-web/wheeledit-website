@@ -15,7 +15,7 @@ const nextConfig = {
         ],
     },
     
-    // Đảm bảo URL luôn kết thúc bằng / (ví dụ: /blog/) giúp SEO và định tuyến tĩnh tốt hơn
+    // Bật trailingSlash để tạo cấu trúc thư mục/index.html, tránh lỗi 404 trên hosting tĩnh
     trailingSlash: true,
 };
 

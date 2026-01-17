@@ -310,19 +310,19 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
                     </form>
                 </div>
                 <div className="flex flex-col justify-between">
-                    <div>
+                    <div className="relative z-10">
                         <h3 className="text-2xl font-bold text-gray-800 mb-4">Contact Information</h3>
                         <p className="text-gray-600 mb-6">Have any questions or want to discuss a project? Reach out to us through any of the channels below. We're here to help!</p>
                         <ul className="space-y-4 text-gray-700">
                             <li className="flex items-center gap-3">
                                 <FaEnvelope className="text-[#007BFF] w-5 text-center flex-shrink-0" />
-                                <a href={`mailto:${contactInfo.email}`} className="hover:text-[#007BFF] transition-colors">
+                                <a href={`mailto:${contactInfo.email}`} className="hover:text-[#007BFF] transition-colors relative z-20">
                                     {contactInfo.email}
                                 </a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <FaWhatsapp className="text-[#007BFF] w-5 text-center flex-shrink-0" />
-                                <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-[#007BFF] transition-colors">
+                                <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-[#007BFF] transition-colors relative z-20">
                                     {contactInfo.phoneDisplay}
                                 </a>
                             </li>
@@ -332,20 +332,20 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
                                     href={contactInfo.addressLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-[#007BFF] transition-colors"
+                                    className="hover:text-[#007BFF] transition-colors relative z-20"
                                 >
                                     {contactInfo.address}
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <div>
-                        <h4 className="text-xl font-bold text-gray-800 mb-4 mt-8">Follow Us</h4>
+                    <div className="relative z-10 mt-8">
+                        <h4 className="text-xl font-bold text-gray-800 mb-4">Follow Us</h4>
                         <div className="flex gap-5 text-2xl text-gray-600">
-                            <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#007BFF] transition-colors"><FaFacebookF /></a>
-                            <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#007BFF] transition-colors"><FaInstagram /></a>
-                            <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-[#007BFF] transition-colors"><FaYoutube /></a>
-                            <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#007BFF] transition-colors"><FaWhatsapp /></a>
+                            <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#007BFF] transition-colors relative z-20"><FaFacebookF /></a>
+                            <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#007BFF] transition-colors relative z-20"><FaInstagram /></a>
+                            <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-[#007BFF] transition-colors relative z-20"><FaYoutube /></a>
+                            <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#007BFF] transition-colors relative z-20"><FaWhatsapp /></a>
                         </div>
                     </div>
                 </div>
