@@ -1,3 +1,4 @@
+
 import { MetadataRoute } from 'next';
 import { getAllPosts } from '../lib/posts';
 
@@ -7,23 +8,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
 
   const postEntries: MetadataRoute.Sitemap = posts.map(({ meta }) => ({
-    url: `${baseUrl}/blog/${meta.slug}`,
+    url: `${baseUrl}/blog/${meta.slug}/`,
     lastModified: new Date(meta.date),
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
 
   return [
     {
-      url: baseUrl,
+      url: `${baseUrl}/`,
       lastModified: new Date(),
-      changeFrequency: 'yearly',
+      changeFrequency: 'yearly' as const,
       priority: 1,
     },
     {
-      url: `${baseUrl}/blog`,
+      url: `${baseUrl}/blog/`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     ...postEntries,

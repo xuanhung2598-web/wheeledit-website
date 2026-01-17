@@ -15,9 +15,9 @@ const nextConfig = {
         ],
     },
     
-    // Tắt trailingSlash (mặc định là false) để tạo tệp dạng services/slug.html
-    // Điều này đồng bộ với các link footer đang hoạt động tốt của bạn
-    trailingSlash: false,
+    // Bật trailingSlash: QUAN TRỌNG NHẤT để sửa lỗi 404 trên Cloudflare Pages
+    // Nó sẽ tạo ra cấu trúc: /services/single-exposure/index.html
+    trailingSlash: true,
 };
 
 export default nextConfig;

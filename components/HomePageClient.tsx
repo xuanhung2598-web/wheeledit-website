@@ -48,7 +48,7 @@ const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ servic
           
           {service.gallery && service.gallery.length > 0 && (
             <Link 
-              href={`/services/${service.slug}`} 
+              href={`/services/${service.slug}/`} 
               className="flex items-center justify-center gap-2 border-2 border-[#007BFF] text-[#007BFF] px-7 py-3 rounded-lg font-semibold hover:bg-[#007BFF] hover:text-white transition-all duration-300 hover:-translate-y-0.5 shadow-md"
             >
               <FaImages /> View Gallery
@@ -234,17 +234,17 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
             {recentPosts.map((post, index) => (
               <AnimateOnScroll key={post.meta.slug} delay={index * 0.1}>
                 <div className="bg-white rounded-xl overflow-hidden shadow-md group">
-                  <Link href={`/blog/${post.meta.slug}`}>
+                  <Link href={`/blog/${post.meta.slug}/`}>
                     <div className="relative h-48 overflow-hidden">
                       <Image src={post.meta.image} alt={post.meta.title} fill className="object-cover transition-transform group-hover:scale-105" />
                     </div>
                   </Link>
                   <div className="p-6">
-                    <Link href={`/blog/${post.meta.slug}`}>
+                    <Link href={`/blog/${post.meta.slug}/`}>
                       <h3 className="font-bold text-xl mb-2 hover:text-[#007BFF] transition-colors">{post.meta.title}</h3>
                     </Link>
                     <p className="text-gray-600 text-sm mb-4 line-clamp-2">{post.meta.excerpt}</p>
-                    <Link href={`/blog/${post.meta.slug}`} className="text-[#007BFF] font-semibold text-sm">Read More →</Link>
+                    <Link href={`/blog/${post.meta.slug}/`} className="text-[#007BFF] font-semibold text-sm">Read More →</Link>
                   </div>
                 </div>
               </AnimateOnScroll>
