@@ -38,7 +38,7 @@ const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ servic
       </div>
       <div className={`lg:col-span-2 text-center sm:text-left ${textOrder}`}>
         <h3 className="text-3xl font-bold text-gray-800">{service.title}</h3>
-        <p className="text-2xl font-semibold text-[#007BFF] my-3">{service.price}</p>
+        {service.price && <p className="text-2xl font-semibold text-[#007BFF] my-3">{service.price}</p>}
         <p className="text-gray-600 mb-6 text-lg">{service.description}</p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
@@ -46,7 +46,6 @@ const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ servic
             Get a Free Test
           </button>
           
-          {/* Nút View Gallery mới được tích hợp */}
           {service.gallery && service.gallery.length > 0 && (
             <Link 
               href={`/services/${service.slug}/`} 
@@ -144,7 +143,7 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
 
       {/* Services Section */}
       <section id="services" className="py-24 bg-white">
-        <AnimateOnScroll className="max-w-7xl mx-auto px-5">
+        <div className="max-w-7xl mx-auto px-5">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 relative inline-block">
               Our Services
@@ -153,17 +152,17 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
           </div>
           <div className="space-y-20">
             {services.map((service, index) => (
-              <AnimateOnScroll key={service.title}>
+              <AnimateOnScroll key={service.slug}>
                 <ServiceCard service={service} reverse={index % 2 !== 0} />
               </AnimateOnScroll>
             ))}
           </div>
-        </AnimateOnScroll>
+        </div>
       </section>
 
       {/* Why Us Section */}
       <section id="about" className="py-24 bg-gray-50">
-        <AnimateOnScroll className="max-w-7xl mx-auto px-5">
+        <div className="max-w-7xl mx-auto px-5">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 relative inline-block">
               Why Choose Us?
@@ -200,12 +199,12 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
               </div>
             </AnimateOnScroll>
           </div>
-        </AnimateOnScroll>
+        </div>
       </section>
 
       {/* Testimonials Section */}
       <section id="testimonials" className="py-24 bg-white">
-        <AnimateOnScroll className="max-w-7xl mx-auto px-5">
+        <div className="max-w-7xl mx-auto px-5">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 relative inline-block">
               What Our Clients Say
@@ -224,12 +223,12 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
               </AnimateOnScroll>
             ))}
           </div>
-        </AnimateOnScroll>
+        </div>
       </section>
 
       {/* From Our Blog Section */}
       <section id="blog-preview" className="py-24 bg-gray-50">
-        <AnimateOnScroll className="max-w-7xl mx-auto px-5">
+        <div className="max-w-7xl mx-auto px-5">
             <div className="text-center mb-16">
                 <h2 className="text-4xl font-bold text-gray-800 relative inline-block">
                     From Our Blog
@@ -270,12 +269,12 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
                     View All Posts
                 </Link>
             </div>
-        </AnimateOnScroll>
+        </div>
       </section>
 
        {/* Contact Section */}
       <section id="contact" className="py-24 bg-white">
-        <AnimateOnScroll className="max-w-7xl mx-auto px-5">
+        <div className="max-w-7xl mx-auto px-5">
            <div className="text-center mb-16">
                 <h2 className="text-4xl font-bold text-gray-800 relative inline-block">
                     Get In Touch
@@ -351,7 +350,7 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
                     </div>
                 </div>
             </div>
-        </AnimateOnScroll>
+        </div>
       </section>
     </>
   );
