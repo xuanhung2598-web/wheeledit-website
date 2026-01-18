@@ -6,7 +6,6 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-// FIX: Sửa từ ../../../../ thành ../../../ vì file nằm ở app/blog/[slug]/page.tsx
 import { getPostBySlug, getAllPosts } from '../../../lib/posts';
 import type { Metadata } from 'next';
 import AnimateOnScroll from '../../../components/AnimateOnScroll';
@@ -23,6 +22,7 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
+  console.log(`Static Exporting ${posts.length} blog posts...`);
   return posts.map(post => ({
     slug: post.meta.slug,
   }));
