@@ -18,7 +18,7 @@ const BlogList: React.FC<BlogListProps> = ({ posts }) => {
         <AnimateOnScroll key={post.meta.slug} delay={index * 0.1}>
           <div className="group bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col h-full">
             <Link 
-              href={`/blog/${post.meta.slug}/`} 
+              href={`/blog/${post.meta.slug}`} 
               prefetch={false} 
               aria-label={`Read more about ${post.meta.title}`}
             >
@@ -33,7 +33,7 @@ const BlogList: React.FC<BlogListProps> = ({ posts }) => {
               />
             </Link>
             <div className="p-6 flex flex-col flex-grow">
-              <Link href={`/blog/${post.meta.slug}/`} prefetch={false}>
+              <Link href={`/blog/${post.meta.slug}`} prefetch={false}>
                 <h2 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#007BFF] transition-colors duration-300">
                   {post.meta.title}
                 </h2>
@@ -42,7 +42,7 @@ const BlogList: React.FC<BlogListProps> = ({ posts }) => {
               <div className="flex flex-wrap gap-2 mb-4">
                 {post.meta.tags.map(tag => (
                   <Link 
-                    href={`/blog/tag/${tag.toLowerCase().replace(/ /g, '-')}/`}
+                    href={`/blog/tag/${tag.toLowerCase().replace(/ /g, '-')}`}
                     key={tag} 
                     prefetch={false}
                     className="bg-blue-100 text-[#007BFF] text-xs font-semibold px-2.5 py-1 rounded-full hover:bg-blue-200 transition-colors z-10"

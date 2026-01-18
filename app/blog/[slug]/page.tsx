@@ -22,7 +22,6 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
-  console.log(`Static Exporting ${posts.length} blog posts...`);
   return posts.map(post => ({
     slug: post.meta.slug,
   }));
@@ -35,7 +34,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return { title: 'Post Not Found' };
   }
   
-  const url = `/blog/${post.meta.slug}/`;
+  const url = `/blog/${post.meta.slug}`;
 
   return {
     title: post.meta.title,
@@ -65,7 +64,7 @@ const BlogPostPage = ({ params }: { params: { slug: string } }) => {
   
   const breadcrumbItems = [
     { href: '/', label: 'Home' },
-    { href: '/blog/', label: 'Blog' },
+    { href: '/blog', label: 'Blog' },
     { label: post.meta.title },
   ];
 
@@ -104,7 +103,7 @@ const BlogPostPage = ({ params }: { params: { slug: string } }) => {
                 </article>
               </AnimateOnScroll>
               
-              <SocialShare title={post.meta.title} url={`https://wheeledit.com/blog/${slug}/`} />
+              <SocialShare title={post.meta.title} url={`https://wheeledit.com/blog/${slug}`} />
               {authorDetails && <AuthorBio author={authorDetails} />}
               <CtaSection />
             </main>
