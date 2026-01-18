@@ -1,23 +1,20 @@
 
 import React from 'react';
-// FIX: Sửa từ ../../../../ thành ../../../ vì file nằm ở app/services/[slug]/page.tsx
 import { services } from '../../../lib/data';
 import { notFound } from 'next/navigation';
 import ServiceGalleryClient from '../../../components/ServiceGalleryClient';
 import type { Metadata } from 'next';
 
+// dynamicParams = false buộc Next.js phải có đủ params tại thời điểm build
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  console.log('Generating static pages for services...');
+  // Lấy tất cả các service có slug, không cần filter quá phức tạp ở đây 
+  // để đảm bảo Next.js nhận diện được các route
+  const paths = services.map((service) => ({
+    slug: service.slug,
+  }));
   
-  const paths = services
-    .filter(s => s.gallery && s.gallery.length > 0)
-    .map(service => ({
-      slug: service.slug,
-    }));
-    
-  console.log(`Exporting ${paths.length} service gallery pages.`);
   return paths;
 }
 
@@ -29,6 +26,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${service.title} Portfolio`,
     description: `Browse our high-quality real estate editing examples for ${service.title}. Professional results delivered in 24 hours.`,
+    alternates: {
+      canonical: `/services/${slug}/`,
+    },
   };
 }
 
@@ -36,7 +36,8 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const service = services.find(s => s.slug === slug);
 
-  if (!service || !service.gallery) {
+  // Nếu không có gallery, chúng ta vẫn cho hiển thị giao diện trống thay vì 404 ngay lập tức
+  if (!service) {
     notFound();
   }
 
