@@ -5,14 +5,10 @@ import matter from 'gray-matter';
 import { Post } from '../types';
 import { cache } from 'react';
 
-// Đường dẫn đến thư mục chứa bài viết
-const postsDirectory = path.join((process as any).cwd(), '_posts');
+const postsDirectory = path.join(process.cwd(), '_posts');
 
 export const getAllPosts = cache((): Post[] => {
-  if (!fs.existsSync(postsDirectory)) {
-    console.warn('Directory _posts does not exist');
-    return [];
-  }
+  if (!fs.existsSync(postsDirectory)) return [];
 
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames

@@ -1,10 +1,10 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // Chế độ Web tĩnh hoàn toàn
+    // Chế độ Web tĩnh hoàn toàn - Sẽ xuất ra thư mục 'out'
     output: 'export',
     
-    // Cloudflare Pages yêu cầu tắt tối ưu ảnh server-side của Next.js
+    // Tắt tối ưu ảnh server-side vì Cloudflare Pages Static không hỗ trợ
     images: {
         unoptimized: true,
         remotePatterns: [
@@ -15,9 +15,12 @@ const nextConfig = {
         ],
     },
     
-    // Bật trailingSlash để tạo cấu trúc thư mục /page/index.html
-    // Giúp Cloudflare Pages xử lý định tuyến tốt hơn, tránh lỗi 404 khi refresh.
+    // Rất quan trọng: Tạo cấu trúc thư mục /service-name/index.html
+    // Giúp Cloudflare Pages phục vụ trang khi người dùng truy cập trực tiếp hoặc F5.
     trailingSlash: true,
+    
+    // Tắt telemetry để build nhanh hơn
+    telemetry: false,
 };
 
 export default nextConfig;
