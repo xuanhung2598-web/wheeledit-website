@@ -1,16 +1,14 @@
 
 import React from 'react';
-// Sửa đường dẫn từ ../../../ thành ../../../../ vì file này nằm sâu 4 cấp
-import { services } from '../../../../lib/data';
+// FIX: Sửa từ ../../../../ thành ../../../ vì file nằm ở app/services/[slug]/page.tsx
+import { services } from '../../../lib/data';
 import { notFound } from 'next/navigation';
-import ServiceGalleryClient from '../../../../components/ServiceGalleryClient';
+import ServiceGalleryClient from '../../../components/ServiceGalleryClient';
 import type { Metadata } from 'next';
 
-// Quan trọng: Ngăn Next.js cố gắng tạo trang động lúc runtime trên Cloudflare
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  // Debug log để kiểm tra trong quá trình build (xem trong Cloudflare Logs)
   console.log('Generating static pages for services...');
   
   const paths = services

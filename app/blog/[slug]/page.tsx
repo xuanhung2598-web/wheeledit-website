@@ -6,18 +6,18 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-// Sửa đường dẫn import
-import { getPostBySlug, getAllPosts } from '../../../../lib/posts';
+// FIX: Sửa từ ../../../../ thành ../../../ vì file nằm ở app/blog/[slug]/page.tsx
+import { getPostBySlug, getAllPosts } from '../../../lib/posts';
 import type { Metadata } from 'next';
-import AnimateOnScroll from '../../../../components/AnimateOnScroll';
+import AnimateOnScroll from '../../../components/AnimateOnScroll';
 import { notFound } from 'next/navigation';
-import CtaSection from '../../../../components/CtaSection';
-import Breadcrumbs from '../../../../components/Breadcrumbs';
-import AuthorBio from '../../../../components/AuthorBio';
-import { authors } from '../../../../lib/authors';
-import SocialShare from '../../../../components/SocialShare';
-import TableOfContents from '../../../../components/TableOfContents';
-import BlogSidebar from '../../../../components/BlogSidebar';
+import CtaSection from '../../../components/CtaSection';
+import Breadcrumbs from '../../../components/Breadcrumbs';
+import AuthorBio from '../../../components/AuthorBio';
+import { authors } from '../../../lib/authors';
+import SocialShare from '../../../components/SocialShare';
+import TableOfContents from '../../../components/TableOfContents';
+import BlogSidebar from '../../../components/BlogSidebar';
 
 export const dynamicParams = false;
 

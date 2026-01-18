@@ -17,10 +17,7 @@ const nextConfig = {
     
     // Rất quan trọng: Tạo cấu trúc thư mục /service-name/index.html
     // Giúp Cloudflare Pages phục vụ trang khi người dùng truy cập trực tiếp hoặc F5.
-    trailingSlash: true,
-    
-    // Tắt telemetry để build nhanh hơn
-    telemetry: false,
+    trailingSlash: true
 };
 
 export default nextConfig;
