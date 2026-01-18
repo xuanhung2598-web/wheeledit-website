@@ -46,14 +46,12 @@ const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ servic
             Get a Free Test
           </button>
           
-          {service.gallery && service.gallery.length > 0 && (
-            <Link 
-              href={`/services/${service.slug}/`} 
-              className="flex items-center justify-center gap-2 border-2 border-[#007BFF] text-[#007BFF] px-7 py-3 rounded-lg font-semibold hover:bg-[#007BFF] hover:text-white transition-all duration-300 hover:-translate-y-0.5 shadow-md"
-            >
-              <FaImages /> View Gallery
-            </Link>
-          )}
+          <Link 
+            href={`/services/${service.slug}/`} 
+            className="flex items-center justify-center gap-2 border-2 border-[#007BFF] text-[#007BFF] px-7 py-3 rounded-lg font-semibold hover:bg-[#007BFF] hover:text-white transition-all duration-300 hover:-translate-y-0.5 shadow-md"
+          >
+            <FaImages /> View Gallery
+          </Link>
         </div>
       </div>
     </div>

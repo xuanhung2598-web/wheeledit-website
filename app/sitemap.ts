@@ -1,6 +1,7 @@
 
 import { MetadataRoute } from 'next';
 import { getAllPosts } from '../lib/posts';
+import { services } from '../lib/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://wheeledit.com';
@@ -12,6 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(meta.date),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
+  }));
+
+  const serviceEntries: MetadataRoute.Sitemap = services.map((service) => ({
+    url: `${baseUrl}/services/${service.slug}/`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
   }));
 
   return [
@@ -27,6 +35,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/services/`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
     ...postEntries,
+    ...serviceEntries,
   ];
 }
