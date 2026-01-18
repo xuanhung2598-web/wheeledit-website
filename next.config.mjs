@@ -15,9 +15,10 @@ const nextConfig = {
         ],
     },
     
-    // Bật trailingSlash: QUAN TRỌNG NHẤT để sửa lỗi 404 trên Cloudflare Pages
-    // Nó sẽ tạo ra cấu trúc: /services/single-exposure/index.html
-    trailingSlash: true,
+    // Tắt trailingSlash (mặc định là false)
+    // Next.js sẽ tạo ra /services/single-exposure.html
+    // Cloudflare Pages sẽ phục vụ nó tại URL /services/single-exposure
+    trailingSlash: false,
 };
 
 export default nextConfig;
