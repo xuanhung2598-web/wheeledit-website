@@ -1,25 +1,26 @@
-
 import React from 'react';
 import { services } from '../../../lib/data';
 import { notFound } from 'next/navigation';
 import ServiceGalleryClient from '../../../components/ServiceGalleryClient';
 import type { Metadata } from 'next';
 
-// Ép buộc Next.js xử lý trang này là static hoàn toàn
+// 1. Cấu hình bắt buộc cho Static Export
 export const dynamic = 'force-static';
 export const dynamicParams = false;
 
-// Hàm này cực kỳ quan trọng, nó phải trả về danh sách slug
+/**
+ * 2. KHAI BÁO BIẾN EXPORT (Next.js scanner ưu tiên cách này trên Windows)
+ */
 export async function generateStaticParams() {
-  const paths = services.map((service) => ({
-    slug: service.slug,
-  }));
-  
-  // Log này sẽ xuất hiện trong Cloudflare Build Log nếu thành công
-  console.log('--- GENERATING GALLERY PAGES ---');
-  paths.forEach(p => console.log(`Path: /services/${p.slug}/`));
-  
-  return paths;
+  return [
+    { slug: 'ai-enhancement' },
+    { slug: 'single-exposure' },
+    { slug: 'hdr-merge' },
+    { slug: 'flash' },
+    { slug: 'video-editing' },
+    { slug: 'object-removal' },
+    { slug: 'virtual-staging' }
+  ];
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
@@ -36,7 +37,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default function ServicePage({ params }: { params: { slug: string } }) {
-  const service = services.find(s => s.slug === params.slug);
+  const { slug } = params;
+  const service = services.find(s => s.slug === slug);
 
   if (!service) {
     notFound();
