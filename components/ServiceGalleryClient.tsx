@@ -8,6 +8,7 @@ import { Service } from '../types';
 import { FaArrowLeft, FaTimes, FaSearchPlus } from 'react-icons/fa';
 import AnimateOnScroll from './AnimateOnScroll';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getFlickrUrl } from '../lib/flickr';
 
 interface ServiceGalleryClientProps {
   service: Service;
@@ -52,7 +53,7 @@ const ServiceGalleryClient: React.FC<ServiceGalleryClientProps> = ({ service }) 
                 onClick={() => setSelectedImage(img)}
               >
                 <Image 
-                  src={img} 
+                  src={getFlickrUrl(img, 'b')} 
                   alt="Gallery"
                   width={800}
                   height={1000}
@@ -86,7 +87,7 @@ const ServiceGalleryClient: React.FC<ServiceGalleryClientProps> = ({ service }) 
           >
             <button className="absolute top-8 right-8 text-white text-4xl">&times;</button>
             <MotionDiv initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="relative w-full h-full max-w-7xl">
-                <Image src={selectedImage} alt="Preview" fill className="object-contain" unoptimized />
+                <Image src={getFlickrUrl(selectedImage, 'h')} alt="Preview" fill className="object-contain" unoptimized />
             </MotionDiv>
           </MotionDiv>
         )}
