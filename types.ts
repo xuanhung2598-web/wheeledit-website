@@ -24,6 +24,7 @@ export interface Service {
   after?: string;
   videoUrl?: string;
   gallery?: string[]; 
+  videos?: string[];
 }
 
 export interface Testimonial {

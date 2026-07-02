@@ -8,6 +8,7 @@ import Image from 'next/image';
 import AnimateOnScroll from './AnimateOnScroll';
 import { Service, Post } from '../types';
 import { services, testimonials, socialLinks, contactInfo } from '../lib/data';
+import { parseVideoUrl } from '../lib/video';
 import { FaRocket, FaGem, FaDollarSign, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp, FaImages } from 'react-icons/fa';
 
 
@@ -20,17 +21,44 @@ const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ servic
     <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
       <div className={`lg:col-span-3 ${reverse ? 'lg:order-last' : ''}`}>
         {service.videoUrl ? (
-          <div className="aspect-video rounded-xl shadow-2xl overflow-hidden">
-            <iframe
-              width="100%"
-              height="100%"
-              src={service.videoUrl}
-              title={service.title}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
+          <div className="aspect-video rounded-xl shadow-2xl overflow-hidden bg-black">
+            {(() => {
+              const parsed = parseVideoUrl(service.videoUrl);
+              let embedSrc = parsed.embedUrl;
+              
+              if (parsed.type === 'youtube') {
+                const videoId = parsed.embedUrl.split('/embed/')[1]?.split('?')[0];
+                embedSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&rel=0`;
+              } else if (parsed.type === 'vimeo') {
+                const videoId = parsed.embedUrl.split('/video/')[1]?.split('?')[0];
+                embedSrc = `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&loop=1`;
+              }
+              
+              if (parsed.type === 'direct') {
+                return (
+                  <video 
+                    src={parsed.embedUrl} 
+                    controls 
+                    autoPlay 
+                    muted 
+                    loop 
+                    className="w-full h-full object-cover"
+                  />
+                );
+              }
+              return (
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={embedSrc}
+                  title={service.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowFullScreen
+                  loading="lazy"
+                ></iframe>
+              );
+            })()}
           </div>
         ) : (
           service.before && service.after && <BeforeAfterSlider before={service.before} after={service.after} alt={service.title} />
@@ -209,7 +237,7 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
               <AnimateOnScroll key={index} delay={index * 0.1}>
                 <div className="bg-white p-8 rounded-lg border-l-4 border-[#007BFF] shadow-lg h-full">
                   <Image src={testimonial.avatar} alt={testimonial.author} width={80} height={80} className="w-20 h-20 rounded-full object-cover mx-auto -mt-16 mb-4 border-4 border-white" />
-                  <blockquote className="text-gray-600 italic text-center mb-4">"{testimonial.quote}"</blockquote>
+                  <blockquote className="text-gray-600 italic text-center mb-4">&ldquo;{testimonial.quote}&rdquo;</blockquote>
                   <cite className="block text-center font-bold text-gray-800">{testimonial.author}</cite>
                   <p className="text-center text-sm text-gray-500">{testimonial.role}</p>
                 </div>
