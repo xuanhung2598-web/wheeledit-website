@@ -65,7 +65,7 @@ export const services: Service[] = [
         "https://live.staticflickr.com/65535/55370337885_edf1da256e.jpg",
         "https://live.staticflickr.com/65535/55370073603_7bfee6f5d3.jpg",
         "https://live.staticflickr.com/65535/55370337765_5c1fa2feb9.jpg",
-        "https://live.staticflickr.com/65535/55370120914_ba4e379323.jpg",
+        "https://live.staticflickr.com/65535/55370120729_1eb071e38a_b.jpg",
       ]
     },
     {
