@@ -10,18 +10,6 @@ export const contactInfo = {
 
 export const services: Service[] = [
     {
-      slug: 'ai-enhancement',
-      title: 'AI Enhancement',
-      description: 'Instantly elevate standard photos. We use advanced AI tools for sky replacement, lawn greening, and lighting correction to make your exterior shots pop.',
-      before: 'https://live.staticflickr.com/65535/54861016673_0f59f4200b_b.jpg',
-      after: 'https://live.staticflickr.com/65535/54861015368_9246bfc2eb_b.jpg',
-      gallery: [
-        'https://live.staticflickr.com/65535/54861015368_9246bfc2eb_b.jpg',
-        'https://picsum.photos/seed/ai1/1200/800',
-        'https://picsum.photos/seed/ai2/1200/800'
-      ]
-    },
-    {
       slug: 'single-exposure',
       title: 'Single Exposure',
       description: 'Perfect for clean, natural-looking results. We correct colors, fix perspective, and sharpen details to deliver a polished image suitable for standard listings.',
@@ -91,8 +79,14 @@ export const services: Service[] = [
     {
       slug: 'video-editing',
       title: 'Video Editing',
-      description: 'Turn raw footage into a cinematic tour. Includes stabilization, color grading, music sync, and transitions to tell a compelling story of the property.',
-      videoUrl: "https://www.youtube.com/embed/mZkP70-IvDg?autoplay=1&mute=1&loop=1&playlist=mZkP70-IvDg"
+      description: 'Turn raw footage into a cinematic tour. Includes stabilization, color grading, and music sync.',
+      videoUrl: "https://www.youtube.com/watch?v=mZkP70-IvDg",
+      videos: [
+        "https://www.youtube.com/watch?v=mZkP70-IvDg",
+        "https://www.youtube.com/watch?v=A8vN9vAnSno",
+        "https://www.youtube.com/watch?v=KzVb37eC7lU",
+        "https://www.youtube.com/watch?v=H7ZorWqBAnw"
+      ]
     },
     {
       slug: 'object-removal',
