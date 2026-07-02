@@ -81,13 +81,32 @@ const ServiceGalleryClient: React.FC<ServiceGalleryClientProps> = ({ service }) 
       <AnimatePresence>
         {selectedImage && (
           <MotionDiv 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} 
-            className="fixed inset-0 z-[2000] bg-black/95 flex items-center justify-center p-4" 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }} 
+            className="fixed inset-0 z-[2000] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out" 
             onClick={() => setSelectedImage(null)}
           >
-            <button className="absolute top-8 right-8 text-white text-4xl">&times;</button>
-            <MotionDiv initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="relative w-full h-full max-w-7xl">
-                <Image src={getFlickrUrl(selectedImage, 'h')} alt="Preview" fill className="object-contain" unoptimized />
+            <button 
+              className="absolute top-6 right-6 text-white hover:text-gray-300 text-4xl transition-colors z-[2020] p-2"
+              onClick={() => setSelectedImage(null)}
+            >
+              <FaTimes />
+            </button>
+            <MotionDiv 
+              initial={{ scale: 0.95, opacity: 0 }} 
+              animate={{ scale: 1, opacity: 1 }} 
+              exit={{ scale: 0.95, opacity: 0 }} 
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative max-w-5xl max-h-[85vh] flex items-center justify-center select-none"
+              onClick={(e: any) => e.stopPropagation()}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src={getFlickrUrl(selectedImage, 'b')} 
+                alt="Preview" 
+                className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border border-white/10"
+              />
             </MotionDiv>
           </MotionDiv>
         )}
