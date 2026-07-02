@@ -40,7 +40,7 @@ export const services: Service[] = [
       before: 'https://live.staticflickr.com/65535/54827937127_f75707f023_b.jpg',
       after: 'https://live.staticflickr.com/65535/54829036884_0985b6af3f_b.jpg',
       gallery: [
-        '"https://live.staticflickr.com/65535/55370263873_1e2797fe26.jpg",
+        "https://live.staticflickr.com/65535/55370263873_1e2797fe26.jpg",
         "https://live.staticflickr.com/65535/55369183672_cf1e40bc21.jpg",
         "https://live.staticflickr.com/65535/55370529420_8f9d759980.jpg",
         "https://live.staticflickr.com/65535/55370529455_c416c26386.jpg",
