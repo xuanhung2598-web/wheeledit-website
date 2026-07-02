@@ -9,7 +9,16 @@ import AnimateOnScroll from './AnimateOnScroll';
 import { Service, Post } from '../types';
 import { services, testimonials, socialLinks, contactInfo } from '../lib/data';
 import { parseVideoUrl } from '../lib/video';
-import { FaRocket, FaGem, FaDollarSign, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp, FaImages } from 'react-icons/fa';
+import { FaRocket, FaGem, FaDollarSign, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp, FaImages, FaCamera, FaLightbulb, FaPlay, FaMagic, FaHome } from 'react-icons/fa';
+
+const serviceIcons: { [key: string]: React.ReactNode } = {
+  'single-exposure': <FaCamera />,
+  'hdr-merge': <FaGem />,
+  'flash': <FaLightbulb />,
+  'video-editing': <FaPlay />,
+  'object-removal': <FaMagic />,
+  'virtual-staging': <FaHome />,
+};
 
 
 const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ service, reverse = false }) => {
@@ -18,7 +27,7 @@ const ServiceCard: React.FC<{ service: Service; reverse?: boolean }> = ({ servic
   const textOrder = reverse ? 'lg:order-first' : '';
 
   return (
-    <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
+    <div id={service.slug} className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center scroll-mt-24">
       <div className={`lg:col-span-3 ${reverse ? 'lg:order-last' : ''}`}>
         {service.videoUrl ? (
           <div className="aspect-video rounded-xl shadow-2xl overflow-hidden bg-black">
@@ -143,7 +152,7 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
   return (
     <>
       {/* Hero Section */}
-      <section id="hero" className="relative h-screen flex items-center justify-center text-white text-center">
+      <section id="hero" className="relative min-h-screen pt-28 pb-12 flex flex-col justify-between items-center text-white text-center">
         <Image
           src="https://live.staticflickr.com/65535/54928312057_6d9393f582_b.jpg"
           alt="Hero Background"
@@ -152,14 +161,50 @@ const HomePageClient: React.FC<{ recentPosts: Post[] }> = ({ recentPosts }) => {
           sizes="100vw"
           className="object-cover -z-10"
         />
-        <div className="absolute inset-0 bg-black/30"></div>
-        <AnimateOnScroll className="relative z-10 p-5 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Professional Real Estate Photo Editing</h1>
-          <p className="text-lg md:text-xl mb-8">Stunning, high-quality images that sell properties faster. First edit is on us!</p>
-          <button onClick={openModal} className="cta-button bg-[#007BFF] text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#0056b3] transition-all duration-300 transform hover:scale-105 shadow-lg">
-            Get Your Free Test Edit
-          </button>
-        </AnimateOnScroll>
+        <div className="absolute inset-0 bg-black/35"></div>
+        
+        {/* Top Half: Hero main details */}
+        <div className="relative z-10 p-5 max-w-4xl mx-auto my-auto">
+          <AnimateOnScroll>
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-md">Professional Real Estate Photo Editing</h1>
+            <p className="text-lg md:text-xl mb-8 drop-shadow-md text-gray-100">Stunning, high-quality images that sell properties faster. First edit is on us!</p>
+            <button onClick={openModal} className="cta-button bg-[#007BFF] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#0056b3] transition-all duration-300 transform hover:scale-105 shadow-xl">
+              Get Your Free Test Edit
+            </button>
+          </AnimateOnScroll>
+        </div>
+
+        {/* Bottom Half: Services Quick-Grid */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 mt-8 md:mt-12">
+          <AnimateOnScroll delay={0.1}>
+            <div className="bg-black/45 backdrop-blur-md rounded-[2rem] p-6 md:p-8 border border-white/10 shadow-2xl">
+              <h2 className="text-xs md:text-sm font-black uppercase tracking-widest text-[#007BFF] mb-5 text-center">
+                Our Editing Services
+              </h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                {services.map((service, idx) => (
+                  <button
+                    key={service.slug}
+                    onClick={() => {
+                      const element = document.getElementById(service.slug);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="flex flex-col items-center p-4 rounded-2xl bg-white/5 hover:bg-white/15 border border-white/5 hover:border-white/20 transition-all duration-300 group text-center cursor-pointer"
+                  >
+                    <div className="text-2xl md:text-3xl text-[#007BFF] mb-2 group-hover:scale-110 transition-transform duration-300">
+                      {serviceIcons[service.slug] || <FaImages />}
+                    </div>
+                    <span className="text-xs md:text-sm font-bold text-white/95 group-hover:text-white transition-colors line-clamp-1">
+                      {service.title}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </AnimateOnScroll>
+        </div>
       </section>
 
       {/* Services Section */}

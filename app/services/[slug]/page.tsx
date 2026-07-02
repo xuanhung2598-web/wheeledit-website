@@ -13,7 +13,6 @@ export const dynamicParams = false;
  */
 export async function generateStaticParams() {
   return [
-    { slug: 'ai-enhancement' },
     { slug: 'single-exposure' },
     { slug: 'hdr-merge' },
     { slug: 'flash' },
