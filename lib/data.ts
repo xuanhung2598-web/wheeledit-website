@@ -80,7 +80,7 @@ export const services: Service[] = [
       slug: 'video-editing',
       title: 'Video Editing',
       description: 'Turn raw footage into a cinematic tour. Includes stabilization, color grading, and music sync.',
-      videoUrl: "https://www.youtube.com/watch?v=mZkP70-IvDg",
+      videoUrl: "https://youtu.be/LgENB-IEBoU?si=Uk0PxMkDDe-r7kuU",
       videos: [
         "https://www.youtube.com/watch?v=mZkP70-IvDg",
         "https://www.youtube.com/watch?v=A8vN9vAnSno",
