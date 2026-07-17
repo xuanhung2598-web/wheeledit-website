@@ -106,7 +106,7 @@ export const services: Service[] = [
       videoUrl: "https://youtu.be/LgENB-IEBoU?si=Uk0PxMkDDe-r7kuU",
       videos: [
         "https://www.youtube.com/watch?v=mZkP70-IvDg",
-        "https://www.youtube.com/watch?v=A8vN9vAnSno",
+        "https://youtu.be/X3CH0V8FaHM?si=I_twVmmkSvk0MdBk",
         "https://www.youtube.com/watch?v=KzVb37eC7lU",
         "https://www.youtube.com/watch?v=H7ZorWqBAnw"
       ]
