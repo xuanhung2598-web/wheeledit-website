@@ -91,23 +91,20 @@ const ServiceGalleryClient: React.FC<ServiceGalleryClientProps> = ({ service }) 
                 return (
                   <AnimateOnScroll key={index} delay={index * 0.1}>
                     <div 
-                      className="relative aspect-video rounded-2xl overflow-hidden shadow-md hover:shadow-2xl cursor-pointer group bg-black"
+                      className="relative aspect-video rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl cursor-pointer group bg-gray-900 border border-gray-100 transition-all duration-300"
                       onClick={() => setSelectedVideoUrl(vidUrl)}
                     >
                       <Image 
                         src={parsed.thumbnailUrl} 
                         alt="Video thumbnail"
                         fill
-                        className="object-cover opacity-85 transition-transform duration-700 group-hover:scale-102"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                         unoptimized
                       />
-                      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                        <div className="w-16 h-16 rounded-full bg-[#007BFF]/90 flex items-center justify-center text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
-                          <FaPlay className="ml-1 text-white text-xl" />
+                      <div className="absolute inset-0 bg-black/25 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#007BFF] flex items-center justify-center text-white shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[#0056b3]">
+                          <FaPlay className="ml-1 text-white text-xl sm:text-2xl" />
                         </div>
-                      </div>
-                      <div className="absolute bottom-4 left-6 text-white text-lg font-bold">
-                        Video Sample #{index + 1}
                       </div>
                     </div>
                   </AnimateOnScroll>
