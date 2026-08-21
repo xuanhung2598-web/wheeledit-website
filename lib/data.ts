@@ -103,12 +103,13 @@ export const services: Service[] = [
       slug: 'video-editing',
       title: 'Video Editing',
       description: 'Turn raw footage into a cinematic tour. Includes stabilization, color grading, and music sync.',
-      videoUrl: "https://youtu.be/LgENB-IEBoU?si=Uk0PxMkDDe-r7kuU",
+      videoUrl: "https://youtu.be/0hNvs5wpJQo?si=gBzwokGabM9_MW6G",
       videos: [
         "https://www.youtube.com/watch?v=mZkP70-IvDg",
         "https://youtu.be/X3CH0V8FaHM?si=I_twVmmkSvk0MdBk",
-        "https://youtu.be/0hNvs5wpJQo?si=gBzwokGabM9_MW6G",
-        "https://youtu.be/GFC7tNYDpQs?si=uvucBb8bsIny679-"
+        "https://youtu.be/LgENB-IEBoU?si=Uk0PxMkDDe-r7kuU",
+        "https://youtu.be/GFC7tNYDpQs?si=uvucBb8bsIny679-",
+        "https://youtu.be/LzMOMeI2P0I?si=nCbJHhrOD5TlzHse",
       ]
     },
     {
