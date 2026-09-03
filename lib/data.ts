@@ -113,8 +113,8 @@ export const services: Service[] = [
         "https://youtu.be/LgENB-IEBoU?si=Uk0PxMkDDe-r7kuU",
         "https://youtu.be/GFC7tNYDpQs?si=uvucBb8bsIny679-",
         "https://youtu.be/LzMOMeI2P0I?si=nCbJHhrOD5TlzHse",
-        "https://www.youtube.com/watch?v=mZkP70-IvDg"
-        "https://youtube.com/shorts/h1fdXKqTxzw?si=a1mXwMmHtGqp6fey"
+        "https://www.youtube.com/watch?v=mZkP70-IvDg",
+        "https://youtube.com/shorts/h1fdXKqTxzw?si=a1mXwMmHtGqp6fey",
       ]
     },
     {
