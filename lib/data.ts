@@ -105,11 +105,15 @@ export const services: Service[] = [
       description: 'Turn raw footage into a cinematic tour. Includes stabilization, color grading, and music sync.',
       videoUrl: "https://youtu.be/0hNvs5wpJQo?si=gBzwokGabM9_MW6G",
       videos: [
-        "https://www.youtube.com/watch?v=mZkP70-IvDg",
+        "https://youtu.be/0hNvs5wpJQo?si=gBzwokGabM9_MW6G",
+        "https://youtu.be/lXXs3HyUmw0?si=5nXTAtuR94H7KrKM",
+        "https://youtu.be/FFs_5VAYyFQ?si=-SUC41MjXcYPyZ_E",
+        "https://youtu.be/0mg-AkhfpGk?si=F4vggqW8AYWnTAWQ",
         "https://youtu.be/X3CH0V8FaHM?si=I_twVmmkSvk0MdBk",
         "https://youtu.be/LgENB-IEBoU?si=Uk0PxMkDDe-r7kuU",
         "https://youtu.be/GFC7tNYDpQs?si=uvucBb8bsIny679-",
         "https://youtu.be/LzMOMeI2P0I?si=nCbJHhrOD5TlzHse",
+        "https://www.youtube.com/watch?v=mZkP70-IvDg"
         "https://youtube.com/shorts/h1fdXKqTxzw?si=a1mXwMmHtGqp6fey"
       ]
     },
